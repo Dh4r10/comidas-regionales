@@ -19,8 +19,11 @@ const MenuAnt = (props) => {
   const onSelect = ({ key }) => {
     setSelectedKeys([key]);
 
-    if (key === "11") {
+    if (key === "51") {
       navigate(salonPaths[0].path);
+    }
+    if (key === "52") {
+      navigate(salonPaths[1].path);
     }
   };
 

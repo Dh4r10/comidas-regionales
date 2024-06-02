@@ -86,7 +86,7 @@ export const ITEMS = [
   {
     key: "3",
     icon: <FontAwesomeIcon icon={faPiggyBank} />,
-    label: "COMPRAS",
+    label: "Compras",
     children: [
       {
         key: "31",
@@ -109,7 +109,7 @@ export const ITEMS = [
   {
     key: "4",
     icon: <FontAwesomeIcon icon={faCreditCard} />,
-    label: "VENTAS",
+    label: "Ventas",
     children: [
       {
         key: "41",
@@ -132,15 +132,15 @@ export const ITEMS = [
   {
     key: "5",
     icon: <FontAwesomeIcon icon={faUtensils} />,
-    label: "SALON",
+    label: "Salón",
     children: [
       {
         key: "51",
-        label: "Option 1",
+        label: "Prueba 1",
       },
       {
         key: "52",
-        label: "Option 2",
+        label: "Prueba 2",
       },
       {
         key: "53",

@@ -1,8 +1,8 @@
-import { useState } from "react";
 import MenuLateral from "./components/MenuLateral";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { salonPaths } from "./utils/routes/SalonRoutes";
 import Prueba from "./modules/Salon/pages/Prueba";
+import PruebaDos from "./modules/Salon/pages/PruebaDos";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to={salonPaths[0].path} />} />
           <Route path={salonPaths[0].path} element={<Prueba />} />
+          <Route path={salonPaths[1].path} element={<PruebaDos />} />
         </Routes>
       </MenuLateral>
     </div>
