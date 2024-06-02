@@ -1,4 +1,4 @@
-export const salonPaths = [
+export const totalRoutes = [
   {
     id: 1,
     name: "prueba",

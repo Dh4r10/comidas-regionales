@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import React, { useState } from "react";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
-import MenuAnt from './MenuAnt';
-import BreadcrumbCN from './BreadCrumb';
-import { totalRutas } from '@/utils/paths';
+import MenuAnt from "./MenuAnt";
+import BreadcrumbCN from "./BreadCrumb";
+import { totalRoutes } from "@/utils/routes/TotalRoutes";
 
-import './MenuLateral.scss';
+import "./MenuLateral.scss";
 
 const MenuLateral = (props) => {
   const { children } = props;
@@ -15,7 +15,7 @@ const MenuLateral = (props) => {
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
-    console.log(collapsed)
+    console.log(collapsed);
   };
 
   return (
@@ -31,7 +31,7 @@ const MenuLateral = (props) => {
           </Button>
           <div className="menu-lateral__boton-image w-full flex justify-center items-center bg-white border-r-[1px]">
             <img
-              className="w-28"
+              className="w-20"
               src="/img/logo_menu_lateral.png"
               alt="Walter logo pequeño"
             />
@@ -41,7 +41,7 @@ const MenuLateral = (props) => {
       </div>
       <div className="menu-lateral__content mx-4 gap-1">
         <div className="flex items-center py-1">
-          <BreadcrumbCN rutas={totalRutas} />
+          <BreadcrumbCN rutas={totalRoutes} />
         </div>
         {children}
       </div>

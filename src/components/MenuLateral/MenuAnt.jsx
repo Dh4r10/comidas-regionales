@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { getLevelKeys } from './MenuLateralFunctions';
-import { ITEMS } from './MenuLateralConstans';
+import { getLevelKeys } from "./MenuLateralFunctions";
+import { ITEMS } from "./MenuLateralConstans";
 
-import { ConfigProvider, Menu } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { seguridadRutas } from '@/utils/paths';
+import { ConfigProvider, Menu } from "antd";
+import { useNavigate } from "react-router-dom";
+import { salonPaths } from "@/utils/routes/SalonRoutes";
 
 const levelKeys = getLevelKeys(ITEMS);
 
@@ -13,20 +13,15 @@ const MenuAnt = (props) => {
   const { collapsed } = props;
   const navigate = useNavigate();
 
-  const [stateOpenKeys, setStateOpenKeys] = useState(['2', '23']);
+  const [stateOpenKeys, setStateOpenKeys] = useState(["2", "23"]);
   const [selectedKeys, setSelectedKeys] = useState([]);
 
   const onSelect = ({ key }) => {
     setSelectedKeys([key]);
 
     if (key === "11") {
-      navigate(seguridadRutas[3].path);
+      navigate(salonPaths[0].path);
     }
-
-    if (key === "12") {
-      navigate(seguridadRutas[3].path + seguridadRutas[4].path);
-    }
-
   };
 
   const onOpenChange = (openKeys) => {
@@ -56,7 +51,7 @@ const MenuAnt = (props) => {
       theme={{
         components: {
           Menu: {
-            itemBorderRadius: 'none',
+            itemBorderRadius: "none",
           },
         },
       }}
@@ -64,7 +59,7 @@ const MenuAnt = (props) => {
       <Menu
         className="menu-lateral__component-ant"
         mode="inline"
-        defaultSelectedKeys={['231']}
+        defaultSelectedKeys={["231"]}
         openKeys={stateOpenKeys}
         selectedKeys={selectedKeys}
         onSelect={onSelect}
