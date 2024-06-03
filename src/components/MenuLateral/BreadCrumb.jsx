@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import {
   Breadcrumb,
@@ -7,9 +7,9 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
+} from "@/components/ui/breadcrumb";
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
 
 function BreadcrumbCN(props) {
   const { rutas } = props;
@@ -17,7 +17,7 @@ function BreadcrumbCN(props) {
   const navigate = useNavigate();
   const location = useLocation();
   const pathnames = location.pathname
-    .split('/')
+    .split("/")
     .filter((x) => x && !/^\d+$/.test(x)); // Obtener los segmentos de la ruta
 
   const handleNavigate = (actualPath) => {
@@ -54,7 +54,7 @@ function BreadcrumbCN(props) {
             return (
               <React.Fragment key={key}>
                 <BreadcrumbItem className="flex items-center">
-                  <BreadcrumbPage className="text-gray-600">
+                  <BreadcrumbPage className="text-slate-600 dark:text-[#B0B0B0]">
                     {alias}
                   </BreadcrumbPage>
                 </BreadcrumbItem>

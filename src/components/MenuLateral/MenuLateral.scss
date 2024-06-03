@@ -16,19 +16,30 @@
     width: 81px;
   }
 
-  .ant-menu-item-danger {
-    border-style: solid !important;
-    border-top: 1px;
-    border-bottom: 1px;
-    border-color: rgba(255, 108, 108, 0.431) !important;
+  .light {
+    .ant-menu-item-danger {
+      border-style: solid !important;
+      border-top: 1px;
+      border-bottom: 1px;
+      border-color: rgba(255, 108, 108, 0.431) !important;
 
-    &:hover {
-      background-color: rgb(254, 240, 240) !important;
+      &:hover {
+        background-color: rgb(254, 240, 240) !important;
+      }
     }
   }
 
   &__content {
     display: grid;
     grid-template-rows: auto 25fr;
+  }
+}
+
+.dark {
+  .ant-menu-item-danger {
+    border-style: solid !important;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-color: rgba(255, 108, 108, 0.431) !important;
   }
 }

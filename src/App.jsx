@@ -6,7 +6,7 @@ import PruebaDos from "./modules/Salon/pages/PruebaDos";
 
 function App() {
   return (
-    <div className="h-screen bg-slate-50">
+    <div className="h-screen bg-slate-100 dark:bg-[#161616]">
       <MenuLateral>
         <Routes>
           <Route path="/" element={<Navigate to={salonPaths[0].path} />} />
