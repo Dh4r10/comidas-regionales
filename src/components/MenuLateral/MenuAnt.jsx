@@ -24,8 +24,6 @@ const MenuAnt = (props) => {
       ? [localStorage.getItem("selectedKeys")]
       : ["51"]
   );
-  console.log("xdd: ", stateOpenKeys);
-  console.log("fff: ", selectedKeys);
 
   const onSelect = ({ key }) => {
     setSelectedKeys([key]);

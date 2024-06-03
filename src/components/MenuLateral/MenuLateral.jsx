@@ -56,6 +56,7 @@ const MenuLateral = (props) => {
                       darkItemSelectedBg: "#1C1C1C",
                       darkSubMenuItemBg: "#252525",
                       darkItemBg: "#1C1C1C",
+                      darkPopupBg: "#1C1C1C",
                     }
                   : {
                       itemBorderRadius: "none",
