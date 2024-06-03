@@ -1,0 +1,35 @@
+.seguridad {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  &__form {
+    min-width: 67vh;
+  }
+
+  &__image {
+    background-image: url(/img/background_login_without_letters.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1270px) {
+  .seguridad {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &__form {
+      width: 100%;
+    }
+
+    &__image {
+      display: none;
+    }
+  }
+}
