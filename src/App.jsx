@@ -3,8 +3,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 
 // MODULO DE SALÓN
 import { salonPaths } from "./utils/routes/SalonRoutes";
-import Prueba from "./modules/Salon/pages/Prueba";
-import PruebaDos from "./modules/Salon/pages/PruebaDos";
+import Mesas from "./modules/Salon/pages/Mesas";
 
 // MODULO DE SEGURIDAD
 
@@ -28,8 +27,7 @@ function App() {
         />
         <Route element={<PrivateRoutes />}>
           <Route path="/" element={<Navigate to={salonPaths[0].path} />} />
-          <Route path={salonPaths[0].path} element={<Prueba />} />
-          <Route path={salonPaths[1].path} element={<PruebaDos />} />
+          <Route path={salonPaths[0].path} element={<Mesas />} />
         </Route>
       </Routes>
     </div>
