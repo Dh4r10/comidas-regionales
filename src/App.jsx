@@ -3,7 +3,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 
 // MODULO DE SALÓN
 import { salonPaths } from "./utils/routes/SalonRoutes";
-import Mesas from "./modules/Salon/pages/Mesas";
+import Comedor from "./modules/Salon/pages/Comedor";
 
 // MODULO DE SEGURIDAD
 
@@ -27,7 +27,7 @@ function App() {
         />
         <Route element={<PrivateRoutes />}>
           <Route path="/" element={<Navigate to={salonPaths[0].path} />} />
-          <Route path={salonPaths[0].path} element={<Mesas />} />
+          <Route path={salonPaths[0].path} element={<Comedor />} />
         </Route>
       </Routes>
     </div>

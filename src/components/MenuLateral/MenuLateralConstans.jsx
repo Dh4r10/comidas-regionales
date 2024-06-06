@@ -136,11 +136,21 @@ export const ITEMS = [
     children: [
       {
         key: "51",
-        label: "Prueba 1",
+        label: "Mesas",
+        children: [
+          {
+            key: "511",
+            label: "Lista de mesas"
+          },
+          {
+            key: "512",
+            label: "Crear mesa"
+          }
+        ]
       },
       {
         key: "52",
-        label: "Prueba 2",
+        label: "Comedor",
       },
       {
         key: "53",
