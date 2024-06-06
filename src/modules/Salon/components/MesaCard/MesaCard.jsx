@@ -39,7 +39,7 @@ const MesaCard = (props) => {
     )
   } else {
     return (
-      <button disabled className={`mesas__organizacion__mesa-card${theme === 'dark' ? "-dark" : ""}-disabled border-[1px] border-slate-300 dark:border-[#252525] p-2 relative`}>
+      <button disabled className={`mesas__organizacion__mesa-card${theme === 'dark' ? "-dark" : ""}-disabled border-[1px] border-slate-300 dark:border-[#252525] p-2 relative cursor-not-allowed`}>
         <div className="flex justify-center items-center p-3 relative">
           <FontAwesomeIcon
             icon={faSquareFull}

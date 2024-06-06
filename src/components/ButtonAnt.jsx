@@ -6,7 +6,7 @@ const ButtonAnt = (props) => {
 
     const { theme } = useContext(ThemeContext)
 
-    const { tittle, disabled, htmlType, type } = props
+    const { tittle, disabled, htmlType, type, onClick } = props
 
     return (
         <ConfigProvider
@@ -30,7 +30,7 @@ const ButtonAnt = (props) => {
                             },
                 }
             }}>
-            <Button className="h-10 rounded-none border-[1px]" type={type} htmlType={htmlType} disabled={disabled}>{tittle}</Button>
+            <Button onClick={onClick} className="h-10 rounded-none border-[1px]" type={type} htmlType={htmlType} disabled={disabled}>{tittle}</Button>
         </ConfigProvider>
     )
 }

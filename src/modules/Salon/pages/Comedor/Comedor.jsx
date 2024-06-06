@@ -24,8 +24,13 @@ const Comedor = () => {
     }
   }
 
-  console.log(idSelected)
-  console.log(selected)
+  const handlePedido = () => {
+    console.log("id de mesa para el pedido: " + idSelected)
+  }
+
+  const handleReserva = () => {
+    console.log("id de mesa para la reserva: " + idSelected)
+  }
 
   return (
     <div className="mesas overflow-auto">
@@ -40,9 +45,9 @@ const Comedor = () => {
         </div>
       </div>
       <div className="flex justify-end items-start pt-4 gap-3">
-        <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Reserva" />
+        <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Reserva" onClick={handleReserva} />
         _
-        <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Pedido" />
+        <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Pedido" onClick={handlePedido} />
       </div>
     </div>
   );

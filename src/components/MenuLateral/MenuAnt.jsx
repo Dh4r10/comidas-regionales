@@ -29,9 +29,9 @@ const MenuAnt = (props) => {
     setSelectedKeys([key]);
     localStorage.setItem("selectedKeys", [key]);
 
-    // if (key === "51") {
-    //   navigate(salonPaths[0].path);
-    // }
+    if (key === "511") {
+      navigate(salonPaths[0].path);
+    }
     if (key === "52") {
       navigate(salonPaths[1].path);
     }
