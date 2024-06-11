@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
-      ? JSON.parse(localStorage.getItem("authTokens"))
+      ? JSON.stringify(localStorage.getItem("authTokens"))
       : null
   );
 
@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }) => {
       .then(function (response) {
         setAuthTokens(response.data);
         console.log(response);
+        localStorage.setItem("authTokens", response.data.token)
         setUser(jwtDecode(response.data.token));
         navigate("/");
         console.log(response)
@@ -49,9 +50,11 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
-  const logoutUser = async () => {
+  const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
+    localStorage.removeItem("selectedKeys");
+    localStorage.removeItem("stateOpenKeys");
     localStorage.removeItem("authTokens");
     navigate("/login");
   };
