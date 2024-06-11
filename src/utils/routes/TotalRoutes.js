@@ -13,6 +13,20 @@ export const totalRoutes = [
     unionPath: "prueba-dos/",
     alias: "PRUEBA DOS",
   },
+  {
+    id: 6,
+    name: "establecimiento",
+    path: "/establecimiento",
+    unionPath: "establecimiento/",
+    alias: "ESTABLECIMIENTO",
+  },
+  {
+    id: 7,
+    name: "sucursales",
+    path: "/sucursales",
+    unionPath: "sucursales/",
+    alias: "SUCURSALES",
+  },
   // {
   //   id: 3,
   //   name: "login",

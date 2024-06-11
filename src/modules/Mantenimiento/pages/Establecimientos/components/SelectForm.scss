@@ -1,0 +1,14 @@
+.select-representate {
+  width: 100%;
+  .button {
+    background-color: transparent;
+    margin: 0;
+    height: 3vh;
+    width: 150px;
+    color: #000;
+    &:hover {
+      background-color: transparent;
+      color: #61b933;
+    }
+  }
+}

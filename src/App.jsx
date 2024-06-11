@@ -13,23 +13,25 @@ import IniciarSesion from "./modules/Seguridad/pages/IniciarSesion";
 import ReestablecerContrasenia from "./modules/Seguridad/pages/ReestablecerContrasenia";
 import ActualizarContrasenia from "./modules/Seguridad/pages/ActualizarContrasenia";
 
+//MODULO DE MANTENIMIENTO
+import Estableciminetos from "./modules/Mantenimiento/pages/Establecimientos/Establecimientos";
+import { matenimientoPaths } from "./utils/routes/MantenimientoRoutes";
+import Sucursales from "./modules/Mantenimiento/pages/Sucursales/Sucursales";
 function App() {
   return (
     <div className="h-screen bg-slate-100 dark:bg-[#161616]">
       <Routes>
         <Route path={seguridadPaths[0].path} element={<IniciarSesion />} />
-        <Route
-          path={seguridadPaths[0].path + seguridadPaths[1].path}
-          element={<ReestablecerContrasenia />}
-        />
-        <Route
-          path={seguridadPaths[2].path}
-          element={<ActualizarContrasenia />}
-        />
+
         <Route element={<PrivateRoutes />}>
           <Route path="/" element={<Navigate to={salonPaths[0].path} />} />
           <Route path={salonPaths[0].path} element={<Prueba />} />
           <Route path={salonPaths[1].path} element={<PruebaDos />} />
+          <Route
+            path={matenimientoPaths[0].path}
+            element={<Estableciminetos />}
+          />
+          <Route path={matenimientoPaths[1].path} element={<Sucursales />} />
         </Route>
       </Routes>
     </div>
