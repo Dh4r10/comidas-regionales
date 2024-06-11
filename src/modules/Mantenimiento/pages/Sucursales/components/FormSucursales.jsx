@@ -59,7 +59,7 @@ export default function FormSucursales(props) {
     provincia_direccion,
   } = datosSucursales;
   const { logo } = idEstablecimiento;
-  const [mostrar, setMostrar] = useState(false);
+  const [mostrar, setMostrar] = useState(true);
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {

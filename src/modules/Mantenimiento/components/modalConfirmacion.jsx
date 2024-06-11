@@ -4,7 +4,7 @@ import { Button, Modal, Space } from "antd";
 const ModalConfirmacion = (props) => {
   const { open, setOpen, postEstablecimiento } = props;
   function oktext() {
-    // postEstablecimiento();
+    postEstablecimiento();
     setOpen(false);
   }
   return (

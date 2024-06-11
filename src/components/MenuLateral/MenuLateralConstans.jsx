@@ -39,48 +39,52 @@ export const ITEMS = [
     children: [
       {
         key: "21",
-        label: "Option 1",
+        label: "Establecimientos",
       },
       {
         key: "22",
-        label: "Option 2",
+        label: "Sucursales",
       },
       {
-        key: "23",
-        label: "Submenu",
-        children: [
-          {
-            key: "231",
-            label: "Option 1",
-          },
-          {
-            key: "232",
-            label: "Option 2",
-          },
-          {
-            key: "233",
-            label: "Option 3",
-          },
-        ],
+        key: "25",
+        label: "Representate Legal",
       },
-      {
-        key: "24",
-        label: "Submenu 2",
-        children: [
-          {
-            key: "241",
-            label: "Option 1",
-          },
-          {
-            key: "242",
-            label: "Option 2",
-          },
-          {
-            key: "243",
-            label: "Option 3",
-          },
-        ],
-      },
+      // {
+      //   key: "23",
+      //   label: "Submenu",
+      //   children: [
+      //     {
+      //       key: "231",
+      //       label: "Option 1",
+      //     },
+      //     {
+      //       key: "232",
+      //       label: "Option 2",
+      //     },
+      //     {
+      //       key: "233",
+      //       label: "Option 3",
+      //     },
+      //   ],
+      // },
+      // {
+      //   key: "24",
+      //   label: "Submenu 2",
+      //   children: [
+      //     {
+      //       key: "241",
+      //       label: "Option 1",
+      //     },
+      //     {
+      //       key: "242",
+      //       label: "Option 2",
+      //     },
+      //     {
+      //       key: "243",
+      //       label: "Option 3",
+      //     },
+      //   ],
+      // },
     ],
   },
   {
@@ -140,13 +144,13 @@ export const ITEMS = [
         children: [
           {
             key: "511",
-            label: "Lista de mesas"
+            label: "Lista de mesas",
           },
           {
             key: "512",
-            label: "Crear mesa"
-          }
-        ]
+            label: "Crear mesa",
+          },
+        ],
       },
       {
         key: "52",

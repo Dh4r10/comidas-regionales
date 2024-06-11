@@ -2,6 +2,7 @@ import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Virtualized } from "@table-library/react-table-library/virtualized";
 import {
   Table,
   Header,
@@ -18,8 +19,13 @@ import { node } from "./data";
 import { Button } from "antd";
 
 const Component = (props) => {
-  const { setMostrar, establecimiento, setDatosEstablecimiento, setOpen } =
-    props;
+  const {
+    setMostrar,
+    establecimiento,
+    setDatosEstablecimiento,
+    setOpen,
+    deleteEstablecimiento,
+  } = props;
   function consoles(id) {
     const datosEstablecimiento = establecimiento[id - 1];
     setDatosEstablecimiento(datosEstablecimiento);
@@ -105,7 +111,10 @@ const Component = (props) => {
                     >
                       <FontAwesomeIcon icon={faPenToSquare} />
                     </Button>
-                    <Button className="button-eliminar bg-[#ff4d4f] text-white ">
+                    <Button
+                      className="button-eliminar bg-[#ff4d4f] text-white "
+                      onClick={deleteEstablecimiento}
+                    >
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
                   </Cell>

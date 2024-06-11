@@ -97,8 +97,8 @@ const Component = (props) => {
                   item={item}
                   onClick={() => consoles(item.id)}
                 >
-                  <Cell>{item.idEstablecimiento.nombre}</Cell>
                   <Cell>{item.nombre}</Cell>
+                  <Cell>{item.idEstablecimiento.nombre}</Cell>
                   <Cell>{item.telefono}</Cell>
                   <Cell>{item.referencia}</Cell>
                   <Cell>{item.distrito_direccion}</Cell>

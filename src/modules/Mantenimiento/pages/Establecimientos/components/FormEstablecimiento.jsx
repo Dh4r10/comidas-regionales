@@ -9,7 +9,10 @@ import { Form } from "@/components/ui/form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ModalConfirmacion from "@/modules/Mantenimiento/components/modalConfirmacion";
-import { postAxios } from "@/modules/Mantenimiento/components/methods";
+import {
+  deleteAxios,
+  postAxios,
+} from "@/modules/Mantenimiento/components/methods";
 //Para los datos del local
 import logoEstablecimiento from "/public/img/image.png";
 const FormSchema = z.object({
@@ -31,8 +34,8 @@ const FormSchema = z.object({
   sitio_web: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
-  representante_legal: z.string().min(0, {
-    message: "Username must be at least 2 characters.",
+  representante_legal: z.object({
+    id: z.string().nonempty("El ID del representante legal es requerido"),
   }),
 });
 import Inputs from "@/modules/Mantenimiento/components/Inputs";
@@ -49,7 +52,7 @@ export default function FormEstablecimiento(props) {
     datosEstablecimiento;
   const { nombre, apellido_materno, apellido_paterno } = representante_legal;
   const nameRepresendate = `${nombre} ${apellido_paterno} ${apellido_materno}`;
-  const [mostrar, setMostrar] = useState(false);
+  const [mostrar, setMostrar] = useState(true);
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -58,21 +61,31 @@ export default function FormEstablecimiento(props) {
       telefono: "",
       razon_social: "",
       sitio_web: "",
-      representante_legal: "",
+      representante_legal: {
+        id: "",
+      },
       correo: "",
     },
   });
   const [data, setData] = useState();
   const [openI, setOpenI] = useState(false);
-  function onSubmit(data) {
+  const URLESTABLECIMIENTO = "http://localhost:8000/api/v1/establecimiento";
+  async function onSubmit(values) {
     setOpen(true);
-    setData(data);
-    console.log(data);
+    setData(values);
+    console.log(values);
   }
-  // const URLESTABLECIMIENTO = "http://localhost:3032/api/establecimiento";
-  // function postEstablecimiento() {
-  //   postAxios(URLESTABLECIMIENTO, data);
-  // }
+
+  function postEstablecimiento() {
+    postAxios(URLESTABLECIMIENTO, data);
+    setOpen(false);
+  }
+
+  function deleteEstablecimiento() {
+    url = `http://localhost:8000/api/v1/establecimiento/${datosEstablecimiento.id}`;
+    deleteAxios(url);
+  }
+
   return (
     <>
       <Form {...form}>
@@ -97,7 +110,7 @@ export default function FormEstablecimiento(props) {
               <div className="establecimiento-form_tres">
                 <SelectForm
                   form={form}
-                  name="representante_legal"
+                  name="representante_legal.id"
                   label="Representate Legal:"
                   setOpenI={setOpenI}
                   desabilitar={true}
@@ -115,6 +128,7 @@ export default function FormEstablecimiento(props) {
                   establecimiento={establecimiento}
                   setDatosEstablecimiento={setDatosEstablecimiento}
                   setOpen={setOpen}
+                  deleteEstablecimiento={deleteEstablecimiento}
                 />
               </div>
 
@@ -149,7 +163,11 @@ export default function FormEstablecimiento(props) {
           </div>
         </form>
       </Form>
-      <ModalConfirmacion open={open} setOpen={setOpen} />
+      <ModalConfirmacion
+        open={open}
+        setOpen={setOpen}
+        postEstablecimiento={postEstablecimiento}
+      />
       <ModalFormRepresentante openI={openI} setOpenI={setOpenI} />
     </>
   );
