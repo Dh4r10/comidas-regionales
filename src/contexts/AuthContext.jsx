@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
-      ? JSON.parse(localStorage.getItem("authTokens"))
+      ? JSON.stringify(localStorage.getItem("authTokens"))
       : null
   );
 
@@ -50,9 +50,11 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
-  const logoutUser = async () => {
+  const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
+    localStorage.removeItem("selectedKeys");
+    localStorage.removeItem("stateOpenKeys");
     localStorage.removeItem("authTokens");
     navigate("/login");
   };
