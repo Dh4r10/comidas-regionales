@@ -7,7 +7,7 @@ export const FORM_SCHEMA_REESTABLECER_CONTRASENIA = {
       message: 'Este campo es requerido',
     })
     .email({
-      message: 'Correo electrónico invalido.',
+      message: 'Correo electrónico no válido.',
     }),
 };
 
