@@ -1,0 +1,1 @@
+export const LOGIN_TOKEN_API="http://localhost:8000/api/v1/auth/login"

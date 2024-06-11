@@ -1,17 +1,17 @@
 export const totalRoutes = [
   {
     id: 1,
-    name: "prueba",
-    path: "/prueba",
-    unionPath: "prueba/",
-    alias: "PRUEBA",
+    name: "lista-mesas",
+    path: "/lista-mesas",
+    unionPath: "lista-mesas/",
+    alias: "LISTA DE MESAS",
   },
   {
     id: 2,
-    name: "prueba-dos",
-    path: "/prueba-dos",
-    unionPath: "prueba-dos/",
-    alias: "PRUEBA DOS",
+    name: "comedor",
+    path: "/comedor",
+    unionPath: "comedor/",
+    alias: "COMEDOR",
   },
   {
     id: 6,
