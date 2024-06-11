@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,8 +15,10 @@ import BackgroundSeguridad from "../../components/BackgroundSeguridad";
 
 import "../../scss/EsquemaSeguridad.scss";
 import { seguridadPaths } from "@/utils/routes/SeguridadRoutes";
+import AuthContext from "@/contexts/AuthContext";
 
 function IniciarSesion() {
+  let {loginUser}=useContext(AuthContext)
   const formSchema = z.object(FORM_SCHEMA_INICIAR_SESION);
 
   const form = useForm({
@@ -25,7 +27,7 @@ function IniciarSesion() {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
+    loginUser(values);
   };
 
   return (
@@ -54,7 +56,7 @@ function IniciarSesion() {
             >
               <div className="text-sm">
                 <Link to={seguridadPaths[1].unionPath}>
-                  <p className="font-semibold text-[#1877F2] hover:text-[#4793F7]">
+                  <p className="font-semibold text-[#009444] hover:text-[#68C052]">
                     ¿Olvidaste tu contraseña?
                   </p>
                 </Link>

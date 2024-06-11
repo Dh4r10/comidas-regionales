@@ -48,7 +48,7 @@ const ReestablecerContrasenia = () => {
               placeholder="Ingrese su correo"
             />
             <Link to={seguridadPaths[0].path}>
-              <p className="text-sm font-normal text-[#1877F2] hover:text-[#4793F7] mt-4">
+              <p className="text-sm font-normal text-[#009444] hover:text-[#68C052] mt-6">
                 Volver a inicio de sesión
               </p>
             </Link>
