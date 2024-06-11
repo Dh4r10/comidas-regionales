@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }) => {
       .then(function (response) {
         setAuthTokens(response.data);
         console.log(response);
+        localStorage.setItem("authTokens", response.data.token)
         setUser(jwtDecode(response.data.token));
         navigate("/");
         console.log(response)
