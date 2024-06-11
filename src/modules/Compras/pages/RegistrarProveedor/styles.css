@@ -1,0 +1,63 @@
+.custom-submit {
+  background-color: rgb(9, 159, 27); /* Cambia el color de fondo */
+  color: white; /* Cambia el color del texto */
+  border: none; /* Quita el borde */
+  padding: 10px 20px; /* Añade espaciado alrededor del texto */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  border-radius: 0px; /* Añade bordes redondeados */
+}
+.custom-submit-a {
+  background-color: #b0b0b0;
+  color: white; /* Cambia el color del texto */
+  border: none; /* Quita el borde */
+  padding: 10px 20px; /* Añade espaciado alrededor del texto */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  border-radius: 0px; /* Añade bordes redondeados */
+}
+.custom-submit-r {
+  background-color: rgb(176 176 176); /* Cambia el color de fondo */
+  color: white; /* Cambia el color del texto */
+  border: none; /* Quita el borde */
+  padding: 10px 20px; /* Añade espaciado alrededor del texto */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  border-radius: 0px; /* Añade bordes redondeados */
+}
+.tamaño {
+  max-width: 28rem;
+}
+.tamaño-a {
+  max-width: 11rem;
+}
+.tamaño-b {
+  max-width: 11rem;
+}
+.tamaño-c {
+  margin-left: 35.5rem;
+}
+
+.over {
+  overflow: auto;
+}
+.icono {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+.icono1 {
+  color: rgb(220, 19, 116);
+}
+
+.centrar {
+  width: 800rem; /* O una anchura fija como 800px */
+  max-width: 500px; /* O el valor que desees */
+  margin: 0 auto; /* Para centrarlo */
+}
+.centrar2 {
+  width: 1500rem; /* O una anchura fija como 800px */
+  max-width: 1250px; /* O el valor que desees */
+  margin: 0 auto; /* Para centrarlo */
+}
+
+input[data-prefix="10"]::placeholder,
+input[data-prefix="20"]::placeholder {
+  color: gray;
+}

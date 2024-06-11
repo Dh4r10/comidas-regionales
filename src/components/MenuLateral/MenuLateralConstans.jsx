@@ -89,20 +89,24 @@ export const ITEMS = [
     label: "Compras",
     children: [
       {
-        key: "31",
-        label: "Option 1",
+        key: "32",
+        label: "Proveedores",
       },
       {
-        key: "32",
-        label: "Option 2",
+        key: "31",
+        label: "Compras",
+      },
+      {
+        key: "35",
+        label: "Detalle Compra",
       },
       {
         key: "33",
-        label: "Option 3",
+        label: "Insumos",
       },
       {
         key: "34",
-        label: "Option 4",
+        label: "Almacén",
       },
     ],
   },

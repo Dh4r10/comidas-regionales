@@ -6,6 +6,7 @@ import { ITEMS } from "./MenuLateralConstans";
 import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { salonPaths } from "@/utils/routes/SalonRoutes";
+import { comprasPaths } from "@/utils/routes/ComprasRoutes";
 
 const levelKeys = getLevelKeys(ITEMS);
 
@@ -34,6 +35,24 @@ const MenuAnt = (props) => {
     }
     if (key === "52") {
       navigate(salonPaths[1].path);
+    }
+    if (key === "31") {
+      navigate(comprasPaths[0].path);
+    }
+    if (key === "32") {
+      navigate(comprasPaths[1].path);
+    }
+    if (key === "33") {
+      navigate(comprasPaths[4].path);
+    }
+    if (key === "34") {
+      navigate(comprasPaths[5].path);
+    }
+    if (key === "35") {
+      navigate(comprasPaths[6].path);
+    }
+    if (key === "36") {
+      navigate(comprasPaths[7].path);
     }
   };
 
