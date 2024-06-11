@@ -11,7 +11,9 @@ import { seguridadPaths } from "./utils/routes/SeguridadRoutes";
 import IniciarSesion from "./modules/Seguridad/pages/IniciarSesion";
 import ReestablecerContrasenia from "./modules/Seguridad/pages/ReestablecerContrasenia";
 import ActualizarContrasenia from "./modules/Seguridad/pages/ActualizarContrasenia";
-
+import ListaUsuarios from "./modules/Seguridad/pages/ListaUsuarios";
+import InformacionUsuario from "./modules/Seguridad/pages/InformacionUsuario";
+import CrearUsuario from "./modules/Seguridad/pages/CrearUsuario";
 function App() {
   return (
     <div className="h-screen bg-slate-100 dark:bg-[#161616]">
@@ -29,6 +31,11 @@ function App() {
           <Route path="/" element={<Navigate to={salonPaths[1].path} />} />
           <Route path={salonPaths[0].path} element={<ListaMesas />} />
           <Route path={salonPaths[1].path} element={<Comedor />} />
+
+          <Route path={seguridadPaths[3].path} element={<ListaUsuarios />} />
+          <Route path={seguridadPaths[4].path} element={<CrearUsuario />} />
+          <Route path={seguridadPaths[5].path} element={<InformacionUsuario />} />
+
         </Route>
       </Routes>
     </div>
