@@ -18,7 +18,6 @@ const MenuAnt = (props) => {
       ? [localStorage.getItem("stateOpenKeys")]
       : ["2", "23"]
   );
-  // const [stateOpenKeys, setStateOpenKeys] = useState(["2", "23"]);
   const [selectedKeys, setSelectedKeys] = useState(
     localStorage.getItem("selectedKeys")
       ? [localStorage.getItem("selectedKeys")]
@@ -32,8 +31,11 @@ const MenuAnt = (props) => {
     if (key === "511") {
       navigate(salonPaths[0].path);
     }
+    if (key === "512") {
+      navigate(salonPaths[0].path + salonPaths[1].path);
+    }
     if (key === "52") {
-      navigate(salonPaths[1].path);
+      navigate(salonPaths[2].path);
     }
   };
 

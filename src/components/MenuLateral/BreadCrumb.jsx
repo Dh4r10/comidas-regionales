@@ -37,7 +37,7 @@ function BreadcrumbCN(props) {
           if (key < pathnames.length - 1) {
             return (
               <React.Fragment key={key}>
-                <BreadcrumbItem className="flex items-center text-blue-500">
+                <BreadcrumbItem className="flex items-center text-[#009444] dark:text-[#099f1b]">
                   <BreadcrumbLink
                     className="cursor-pointer"
                     onClick={() => handleNavigate(path)}

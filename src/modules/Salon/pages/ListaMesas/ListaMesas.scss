@@ -1,8 +1,7 @@
 .lista-mesas {
   display: grid;
   grid-template-rows: auto auto 1fr;
-  // display: flex;
-  // flex-direction: column;
+
   &-table {
     thead {
       th {

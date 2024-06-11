@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Listas from '@/components/Listas';
 import { columnsValue } from './columnsListaMesas';
 import { filtrosListaMesas } from './FiltrosListaMesas/filtrosListaMesas';
@@ -13,7 +13,7 @@ const ListaMesas = () => {
     }
 
     return (
-        <div className="lista-mesas h-full gap-3 min-w-[600px">
+        <div className={`lista-mesas gap-3`}>
             <Listas
                 columnsValue={columnsValue}
                 classNameTable="lista-mesas-table"

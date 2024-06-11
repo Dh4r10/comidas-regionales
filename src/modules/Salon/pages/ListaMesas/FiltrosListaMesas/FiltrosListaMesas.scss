@@ -2,17 +2,22 @@
   display: grid;
   grid-template-rows: auto;
 
-  &__caja {
+  &__box {
     display: grid;
+    grid-template-columns: 1fr auto;
 
-    &-filtros__selects {
+    &-caja {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-    }
 
-    &-filtros__search {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      &-filtros__selects {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      &-filtros__search {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+      }
     }
   }
 }

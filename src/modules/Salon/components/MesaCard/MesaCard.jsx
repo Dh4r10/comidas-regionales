@@ -59,7 +59,7 @@ const MesaCard = (props) => {
           </div>
           <p className="text-xs text-right text-slate-300 dark:text-[#5d5d5d]">Estado: <span className={`${estado ? "text-green-500" : "text-red-500"}`}>{estado ? "Activo" : "Sin servicio"}</span></p>
         </div>
-        <div className="disabled-mask bg-[#8c8f9d36] dark:bg-[#5c5c5c36] absolute top-0 left-0 h-full w-full" />
+        <div className="disabled-mask bg-[#8c8f9d36] dark:bg-[#0909097d] absolute top-0 left-0 h-full w-full" />
       </button>
     )
   }
