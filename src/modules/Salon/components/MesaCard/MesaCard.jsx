@@ -11,6 +11,8 @@ const MesaCard = (props) => {
 
   const { theme } = useContext(ThemeContext)
 
+  const link = "https://www.instagram.com/_n/web_emaillogin?uid=n369kfp&token=8ZYhCZ&auto_send=0"
+
   const { numeroMesa, id, tipoMesa, capacidad, estado, ocupado, onSelected, idSelected } = props;
 
   if (estado) {
