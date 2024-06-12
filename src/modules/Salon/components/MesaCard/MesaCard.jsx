@@ -15,7 +15,7 @@ const MesaCard = (props) => {
 
   if (estado) {
     return (
-      <button className={`mesas__organizacion__mesa-card${theme === 'dark' ? "-dark" : ""}${idSelected == id ? "-selected" : ""} border-[1px] border-slate-300 ${idSelected == id && 'bg-[#2e932e34] border-green-600 dark:bg-[#202020] dark:border-[#252525]'} dark:border-[#252525] p-2 hover:bg-[#2e932e34] hover:border-green-600 dark:hover:bg-[#202020] dark:hover:border-[#252525] cursor-pointer`} onClick={() => onSelected(id)}>
+      <button className={`mesas__organizacion__mesa-card${theme === 'dark' ? "-dark" : ""}${idSelected ? "-selected" : ""} border-[1px] border-slate-300 ${idSelected && 'bg-[#2e932e34] border-green-600 dark:bg-[#202020] dark:border-[#252525]'} dark:border-[#252525] p-2 hover:bg-[#2e932e34] hover:border-green-600 dark:hover:bg-[#202020] dark:hover:border-[#252525] cursor-pointer`} onClick={() => onSelected(id)}>
         <div className="flex justify-center items-center p-3 relative">
           <FontAwesomeIcon
             icon={faSquareFull}
