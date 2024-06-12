@@ -3,7 +3,7 @@ import CallFilter from '@/components/Listas/CallFilter';
 import InputFiltros from '@/components/Listas/Filtros/InputFiltros';
 import { gender } from '../data/options';
 
-export const filtrosListaMesas = (
+export const filtrosListaUsuarios = (
   table,
   classNameFiltros,
   setFilteringSearch,

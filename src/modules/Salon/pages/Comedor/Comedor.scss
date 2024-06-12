@@ -1,9 +1,0 @@
-.mesas {
-  display: grid;
-  grid-template-rows: auto 1fr;
-
-  &__organizacion {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-  }
-}

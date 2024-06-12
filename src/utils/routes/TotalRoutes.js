@@ -13,4 +13,26 @@ export const totalRoutes = [
     unionPath: "comedor/",
     alias: "COMEDOR",
   },
+  {
+    id: 4,
+    name: "lista-usuarios",
+    path: "/lista-usuarios",
+    unionPath:"lista-usuarios/",
+    alias: "LISTA DE USUARIOS",
+  },
+  {
+    id:5,
+    name: "create-user",
+    path: "/create-user",
+    unionPath: "create-user/",
+    alias: "CREAR USUARIO",
+  },
+  {
+    id: 6,
+    name: "info-user",
+    path: "/info-user/:id",
+    unionPath: "info-user/:id",
+    alias: "INFORMACIÓN DEL USUARIO",
+  },
+  
 ];

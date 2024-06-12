@@ -1,24 +1,24 @@
 import React from 'react';
 import Listas from '@/components/Listas';
-import { columnsValue } from './columnsListaMesas';
-import { filtrosListaMesas } from './FiltrosListaMesas/filtrosListaMesas';
+import { columnsValue } from './columnsListaUsuarios';
+import { filtrosListaUsuarios } from './FiltrosListaUsuarios/filtrosListaUsuarios';
 
-import './ListaMesas.scss';
-import './FiltrosListaMesas/FiltrosListaMesas.scss';
+import './ListaUsuarios.scss';
+import './FiltrosListaUsuarios/FiltrosListaUsuarios.scss';
 
-const ListaMesas = () => {
+const ListaUsuarios= () => {
 
     const handleEliminar = (id) => {
         console.log(id)
     }
 
     return (
-        <div className="lista-mesas h-full gap-3 min-w-[600px">
+        <div className="lista-usuarios h-full gap-3 min-w-[600px">
             <Listas
                 columnsValue={columnsValue}
                 classNameTable="lista-mesas-table"
-                classNameFiltros="lista-mesas-filtros"
-                filtrosLista={filtrosListaMesas}
+                classNameFiltros="lista-usuarios-filtros"
+                filtrosLista={filtrosListaUsuarios}
                 multiDelete={true}
                 buttonTittle1="Elimnar"
                 buttonTittle2="Mesa(s)"
@@ -28,4 +28,4 @@ const ListaMesas = () => {
     );
 };
 
-export default ListaMesas;
+export default ListaUsuarios;
