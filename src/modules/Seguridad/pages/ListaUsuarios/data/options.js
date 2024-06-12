@@ -1,19 +1,10 @@
-export const gender = [
-    {
-      value: '',
-      label: 'TODOS',
-    },
-    {
-      value: 'Male',
-      label: 'Male',
-    },
-    {
-      value: 'Female',
-      label: 'Female',
-    },
-    {
-      value: 'Genderfluid',
-      label: 'Genderfluid',
-    },
-  ];
-  
+export const tipoUsuario = [
+  {
+    value: "",
+    label: "TODOS",
+  },
+  {
+    value: "SUPER_USUARIO",
+    label: "SUPER USUARIO",
+  },
+];

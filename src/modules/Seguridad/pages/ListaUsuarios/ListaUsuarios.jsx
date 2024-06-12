@@ -23,7 +23,7 @@ const ListaUsuarios = () => {
                 filtrosLista={filtrosListaUsuarios}
                 multiDelete={true}
                 buttonTittle1="Elimnar"
-                buttonTittle2="Mesa(s)"
+                buttonTittle2="usuarios(s)"
                 buttonFunction={handleEliminar}
             />
         </div>

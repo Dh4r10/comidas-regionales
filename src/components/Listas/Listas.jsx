@@ -48,8 +48,6 @@ const Listas = (props) => {
     getAxios(api, headers, setDataApi, setLoading, setError);
   }, [reload]);
 
-  console.log(dataApi)
-
   const data = dataApi;
 
   const columns = columnsValue(multiDelete);
