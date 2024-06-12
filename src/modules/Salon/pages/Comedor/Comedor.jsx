@@ -32,6 +32,10 @@ const Comedor = () => {
     console.log("id de mesa para la reserva: " + idSelected)
   }
 
+  const handleDetalle = () => {
+    console.log("id de mesa para el detalle: " + idSelected)
+  }
+
   return (
     <div className="mesas overflow-auto">
       <div className="grid gap-3">
@@ -44,10 +48,17 @@ const Comedor = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-end items-start pt-4 gap-3">
-        <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Reserva" onClick={handleReserva} />
-        _
-        <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Pedido" onClick={handlePedido} />
+      <div className="flex justify-between items-start pt-4">
+        <div>
+          <ButtonAnt disabled={!selected} htmlType="button" type="primary" danger={true} tittle="Limpiar seleccion" onClick={handleDetalle} />
+        </div>
+        <div className="flex gap-3">
+          <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Detalle" onClick={handleDetalle} />
+          _
+          <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Reserva" onClick={handleReserva} />
+          _
+          <ButtonAnt disabled={!selected} htmlType="button" type="primary" tittle="Pedido" onClick={handlePedido} />
+        </div>
       </div>
     </div>
   );

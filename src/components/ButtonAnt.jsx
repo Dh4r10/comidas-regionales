@@ -7,7 +7,7 @@ const ButtonAnt = (props) => {
 
     const { theme } = useContext(ThemeContext)
 
-    const { tittle, disabled, htmlType, type, onClick, icon } = props
+    const { tittle, disabled, danger, htmlType, type, onClick, icon } = props
 
     return (
         <ConfigProvider
@@ -32,7 +32,7 @@ const ButtonAnt = (props) => {
                 }
             }}>
             {icon === undefined ? (
-                <Button onClick={onClick} className="h-9 rounded-none border-[1px]" type={type} htmlType={htmlType} disabled={disabled}>{tittle}</Button>
+                <Button onClick={onClick} className="h-9 rounded-none border-[1px]" type={type} htmlType={htmlType} danger={danger} disabled={disabled}>{tittle}</Button>
             ) : (
                 <Button icon={<FontAwesomeIcon icon={icon} />} onClick={onClick} className="h-9 rounded-none border-[1px]" type={type} htmlType={htmlType} disabled={disabled}>{tittle}</Button>
             )}
