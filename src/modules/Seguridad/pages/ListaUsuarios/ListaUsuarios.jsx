@@ -6,7 +6,7 @@ import { filtrosListaUsuarios } from './FiltrosListaUsuarios/filtrosListaUsuario
 import './ListaUsuarios.scss';
 import './FiltrosListaUsuarios/FiltrosListaUsuarios.scss';
 
-const ListaUsuarios= () => {
+const ListaUsuarios = () => {
 
     const handleEliminar = (id) => {
         console.log(id)
@@ -16,7 +16,7 @@ const ListaUsuarios= () => {
         <div className="lista-usuarios h-full gap-3 min-w-[600px">
             <Listas
                 columnsValue={columnsValue}
-                classNameTable="lista-mesas-table"
+                classNameTable="lista-usuarios-table"
                 classNameFiltros="lista-usuarios-filtros"
                 filtrosLista={filtrosListaUsuarios}
                 multiDelete={true}
