@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
-      ? JSON.stringify(localStorage.getItem("authTokens"))
+      ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
 
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
       .then(function (response) {
         setAuthTokens(response.data);
         console.log(response);
-        localStorage.setItem("authTokens", response.data.token)
+        localStorage.setItem("authTokens", JSON.stringify(response.data))
         setUser(jwtDecode(response.data.token));
         navigate("/");
         console.log(response)
