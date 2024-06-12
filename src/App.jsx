@@ -3,8 +3,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 
 // MODULO DE SALÓN
 import { salonPaths } from "./utils/routes/SalonRoutes";
-import Comedor from "./modules/Salon/pages/Comedor/Comedor";
-import ListaMesas from "./modules/Salon/pages/ListaMesas";
+import Comedor from "./modules/Salon/pages/Comedor";
 
 // MODULO DE SEGURIDAD
 import { seguridadPaths } from "./utils/routes/SeguridadRoutes";
@@ -14,7 +13,6 @@ import ActualizarContrasenia from "./modules/Seguridad/pages/ActualizarContrasen
 import ListaUsuarios from "./modules/Seguridad/pages/ListaUsuarios";
 import InformacionUsuario from "./modules/Seguridad/pages/InformacionUsuario";
 import CrearUsuario from "./modules/Seguridad/pages/CrearUsuario";
-import CrearMesa from "./modules/Salon/pages/CrearMesa";
 
 function App() {
   return (
@@ -31,8 +29,6 @@ function App() {
         />
         <Route element={<PrivateRoutes />}>
           <Route path="/" element={<Navigate to={salonPaths[2].path} />} />
-          <Route path={salonPaths[0].path} element={<ListaMesas />} />
-          <Route path={salonPaths[0].path + salonPaths[1].path} element={<CrearMesa />} />
           <Route path={salonPaths[2].path} element={<Comedor />} />
 
           <Route path={seguridadPaths[3].path} element={<ListaUsuarios />} />
