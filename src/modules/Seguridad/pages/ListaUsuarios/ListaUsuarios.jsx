@@ -5,6 +5,7 @@ import { filtrosListaUsuarios } from './FiltrosListaUsuarios/filtrosListaUsuario
 
 import './ListaUsuarios.scss';
 import './FiltrosListaUsuarios/FiltrosListaUsuarios.scss';
+import { USUARIOS_API } from '@/api/SeguridadAPI';
 
 const ListaUsuarios = () => {
 
@@ -15,6 +16,7 @@ const ListaUsuarios = () => {
     return (
         <div className="lista-usuarios h-full gap-3 min-w-[600px">
             <Listas
+                api={USUARIOS_API}
                 columnsValue={columnsValue}
                 classNameTable="lista-usuarios-table"
                 classNameFiltros="lista-usuarios-filtros"
