@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AuthContext from "@/contexts/AuthContext";
 import "./FormSucursales.scss";
 //Para el formulario
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,7 +10,10 @@ import { Form } from "@/components/ui/form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ModalConfirmacion from "@/modules/Mantenimiento/components/modalConfirmacion";
-import { postAxios } from "@/modules/Mantenimiento/components/methods";
+import {
+  deleteAxios,
+  postAxios,
+} from "@/modules/Mantenimiento/components/methods";
 //Para los datos del local
 import logoEstablecimiento from "/public/img/image.png";
 const FormSchema = z.object({
@@ -31,19 +35,19 @@ const FormSchema = z.object({
   distrito_direccion: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
-  idEstablecimiento: z.string().min(1, {
-    message: "Username must be at least 2 characters.",
+  idEstablecimiento: z.object({
+    id: z.string().nonempty("El ID del representante legal es requerido"),
   }),
   referencia: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
 });
 import Inputs from "@/modules/Mantenimiento/components/Inputs";
-import { SelectForm } from "../../Establecimientos/components/SelectForm";
+import { SelectForm } from "./SelectForm";
 import Component from "./Table";
 import ModalFormRepresentante from "@/modules/Mantenimiento/components/ModalFormRepresentante";
 export default function FormSucursales(props) {
-  const { establecimiento, sucursales } = props;
+  const { establecimiento, sucursales, token, setCambio, cambio } = props;
   const [datosEstablecimiento, setDatosEstablecimiento] = useState(
     establecimiento[0]
   );
@@ -69,12 +73,27 @@ export default function FormSucursales(props) {
       departamento_direccion: "",
       provincia_direccion: "",
       distrito_direccion: "",
-      idEstablecimiento: "",
+      idEstablecimiento: {
+        id: "",
+      },
       referencia: "",
     },
   });
   const [data, setData] = useState();
   const [openI, setOpenI] = useState(false);
+  const [spin, setSpin] = useState(false);
+  const URLESTABLECIMIENTO =
+    "http://regionales.app.informaticapp.com:3033/api/v1/sucursales";
+  function postSucursales() {
+    postAxios(URLESTABLECIMIENTO, data, setCambio, cambio, setSpin, token);
+    setCambio(!cambio);
+    setOpen(false);
+  }
+
+  function deleteSucursales(id) {
+    const url = `http://regionales.app.informaticapp.com:3033/api/v1/sucursales/${id}`;
+    deleteAxios(url, setCambio, cambio, setSpin, token);
+  }
   function onSubmit(data) {
     setOpen(true);
     setData(data);
@@ -120,7 +139,7 @@ export default function FormSucursales(props) {
               <div className="establecimiento-form_tres">
                 <SelectForm
                   form={form}
-                  name="idEstablecimiento"
+                  name="idEstablecimiento.id"
                   label="Establecimiento:"
                   setOpenI={setOpenI}
                   desabilitar={false}
@@ -142,6 +161,8 @@ export default function FormSucursales(props) {
                   setDatosEstablecimiento={setDatosEstablecimiento}
                   setOpen={setOpen}
                   setDatosSurcursales={setDatosSucursales}
+                  deleteSucursales={deleteSucursales}
+                  spin={spin}
                 />
               </div>
 
@@ -178,7 +199,11 @@ export default function FormSucursales(props) {
           </div>
         </form>
       </Form>
-      <ModalConfirmacion open={open} setOpen={setOpen} />
+      <ModalConfirmacion
+        open={open}
+        setOpen={setOpen}
+        funcion={postSucursales}
+      />
       <ModalFormRepresentante openI={openI} setOpenI={setOpenI} />
     </>
   );

@@ -16,6 +16,7 @@ import ActualizarContrasenia from "./modules/Seguridad/pages/ActualizarContrasen
 import Estableciminetos from "./modules/Mantenimiento/pages/Establecimientos/Establecimientos";
 import { matenimientoPaths } from "./utils/routes/MantenimientoRoutes";
 import Sucursales from "./modules/Mantenimiento/pages/Sucursales/Sucursales";
+import RepresentanteLegal from "./modules/Mantenimiento/pages/RepresentanteLegal/RepresentateLegal";
 function App() {
   return (
     <div className="h-screen bg-slate-100 dark:bg-[#161616]">
@@ -31,6 +32,10 @@ function App() {
             element={<Estableciminetos />}
           />
           <Route path={matenimientoPaths[1].path} element={<Sucursales />} />
+          <Route
+            path={matenimientoPaths[2].path}
+            element={<RepresentanteLegal />}
+          />
         </Route>
       </Routes>
     </div>

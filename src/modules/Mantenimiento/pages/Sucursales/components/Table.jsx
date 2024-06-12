@@ -14,7 +14,7 @@ import {
 } from "@table-library/react-table-library/table";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
-import { Button } from "antd";
+import { Button, Spin } from "antd";
 
 const Component = (props) => {
   const {
@@ -24,10 +24,12 @@ const Component = (props) => {
     setOpen,
     sucursales,
     setDatosSurcursales,
+    spin,
+    deleteSucursales,
   } = props;
   function consoles(id) {
-    const datosEstablecimiento = establecimiento[id - 1];
-    const datosSucursales = sucursales[id - 1];
+    const datosEstablecimiento = establecimiento[id];
+    const datosSucursales = sucursales[id];
     setDatosEstablecimiento(datosEstablecimiento);
     setDatosSurcursales(datosSucursales);
     setMostrar(true);
@@ -62,7 +64,9 @@ const Component = (props) => {
       `,
     },
   ]);
-
+  if (spin) {
+    return <Spin />;
+  }
   return (
     <div>
       <label htmlFor="search" className="ml-2">
@@ -91,12 +95,8 @@ const Component = (props) => {
             </Header>
 
             <Body>
-              {tableList.map((item) => (
-                <Row
-                  key={item.id}
-                  item={item}
-                  onClick={() => consoles(item.id)}
-                >
+              {tableList.map((item, indice) => (
+                <Row key={item.id} item={item} onClick={() => consoles(indice)}>
                   <Cell>{item.nombre}</Cell>
                   <Cell>{item.idEstablecimiento.nombre}</Cell>
                   <Cell>{item.telefono}</Cell>
@@ -112,7 +112,12 @@ const Component = (props) => {
                     >
                       <FontAwesomeIcon icon={faPenToSquare} />
                     </Button>
-                    <Button className="button-eliminar bg-[#ff4d4f] text-white ">
+                    <Button
+                      className="button-eliminar bg-[#ff4d4f] text-white "
+                      onClick={() => {
+                        deleteSucursales(item.id), console.log("hola");
+                      }}
+                    >
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
                   </Cell>

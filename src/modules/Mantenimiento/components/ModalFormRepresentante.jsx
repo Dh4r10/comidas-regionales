@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Button, Modal } from "antd";
 import Inputs from "./Inputs";
+import { postAxios } from "./methods";
 const FormSchema = z.object({
   nombre: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -29,7 +30,7 @@ const FormSchema = z.object({
   }),
 });
 const ModalFormRepresentante = (props) => {
-  const { openI, setOpenI } = props;
+  const { openI, setOpenI, cambio, setCambio, token, setSpin } = props;
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -41,8 +42,18 @@ const ModalFormRepresentante = (props) => {
       correo: "",
     },
   });
-  function onClick(values) {
+  const URLREPRESENTANTE =
+    "http://regionales.app.informaticapp.com:3033/api/v1/representante-legal";
+  async function onClick(values) {
     console.log(values);
+    await postAxios(
+      URLREPRESENTANTE,
+      values,
+      setCambio,
+      cambio,
+      setSpin,
+      token
+    );
     form.reset();
     setOpenI(false);
   }

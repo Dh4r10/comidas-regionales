@@ -47,6 +47,9 @@ const MenuAnt = (props) => {
     if (key == "22") {
       navigate(matenimientoPaths[1].path);
     }
+    if (key == "25") {
+      navigate(matenimientoPaths[2].path);
+    }
   };
 
   const onOpenChange = (openKeys) => {

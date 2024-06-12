@@ -9,6 +9,7 @@ import { Form } from "@/components/ui/form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ModalConfirmacion from "@/modules/Mantenimiento/components/modalConfirmacion";
+import ModalEliminar from "@/modules/Mantenimiento/components/ModalEliminar";
 import {
   deleteAxios,
   postAxios,
@@ -46,10 +47,12 @@ import ModalFormRepresentante from "@/modules/Mantenimiento/components/ModalForm
 export default function FormEstablecimiento(props) {
   const [idEliminar, setIdEliminar] = useState();
   console.log(idEliminar);
-  const { establecimiento, setCambio, cambio } = props;
+  const { establecimiento, setCambio, cambio, token } = props;
   const [datosEstablecimiento, setDatosEstablecimiento] = useState(
     establecimiento[0]
   );
+  //PARA EL MODAL ELIMINAR
+  const [eliminar, setEliminar] = useState(false);
   const [open, setOpen] = useState(false);
   const { sitio_web, ruc, representante_legal, logo, razon_social } =
     datosEstablecimiento;
@@ -57,6 +60,8 @@ export default function FormEstablecimiento(props) {
   const { nombre, apellido_materno, apellido_paterno } = representante_legal;
   const nameRepresendate = `${nombre} ${apellido_paterno} ${apellido_materno}`;
   const [mostrar, setMostrar] = useState(true);
+  const [IdEditar, setIdEditar] = useState();
+  console.log(IdEditar);
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -74,7 +79,9 @@ export default function FormEstablecimiento(props) {
   const [data, setData] = useState();
   const [openI, setOpenI] = useState(false);
   const [spin, setSpin] = useState(false);
-  const URLESTABLECIMIENTO = "http://localhost:8000/api/v1/establecimiento";
+ 
+  const URLESTABLECIMIENTO =
+    "http://regionales.app.informaticapp.com:3033/api/v1/establecimiento";
   async function onSubmit(values) {
     setOpen(true);
     setData(values);
@@ -82,14 +89,14 @@ export default function FormEstablecimiento(props) {
   }
 
   function postEstablecimiento() {
-    postAxios(URLESTABLECIMIENTO, data, setCambio, cambio, setSpin);
+    postAxios(URLESTABLECIMIENTO, data, setCambio, cambio, setSpin, token);
     setCambio(!cambio);
     setOpen(false);
   }
 
   async function deleteEstablecimiento(id) {
-    const url = `http://localhost:8000/api/v1/establecimiento/${id}`;
-    deleteAxios(url, setCambio, cambio, setSpin);
+    const url = `http://regionales.app.informaticapp.com:3033/api/v1/establecimiento/${id}`;
+    deleteAxios(url, setCambio, cambio, setSpin, token);
   }
   return (
     <>
@@ -135,8 +142,10 @@ export default function FormEstablecimiento(props) {
                   setOpen={setOpen}
                   deleteEstablecimiento={deleteEstablecimiento}
                   setIdEliminar={setIdEliminar}
+                  setEliminar={setEliminar}
                   spin={spin}
                   setSpin={setSpin}
+                  setIdEditar={setIdEditar}
                 />
               </div>
 
@@ -174,9 +183,14 @@ export default function FormEstablecimiento(props) {
       <ModalConfirmacion
         open={open}
         setOpen={setOpen}
-        postEstablecimiento={postEstablecimiento}
+        funcion={postEstablecimiento}
       />
-      <ModalFormRepresentante openI={openI} setOpenI={setOpenI} />
+      <ModalEliminar open={eliminar} setOpen={setEliminar} />
+      <ModalFormRepresentante
+        openI={openI}
+        setOpenI={setOpenI}
+        deleteEstablecimiento={deleteEstablecimiento}
+      />
     </>
   );
 }

@@ -27,6 +27,13 @@ export const totalRoutes = [
     unionPath: "sucursales/",
     alias: "SUCURSALES",
   },
+  {
+    id: 8,
+    name: "representante",
+    path: "/representante",
+    unionPath: "representante/",
+    alias: "REPRESENTATE",
+  },
   // {
   //   id: 3,
   //   name: "login",

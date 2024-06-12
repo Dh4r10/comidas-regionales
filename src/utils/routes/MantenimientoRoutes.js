@@ -13,4 +13,11 @@ export const matenimientoPaths = [
     unionPath: "sucursales/",
     alias: "SUCURSALES",
   },
+  {
+    id: 3,
+    name: "representante",
+    path: "/representante",
+    unionPath: "representante/",
+    alias: "REPRESENTATE",
+  },
 ];

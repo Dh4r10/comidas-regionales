@@ -1,22 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
-import "./Estableciminetos.scss";
+import React from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import FormEstablecimiento from "./components/FormEstablecimiento";
-import MenuLateral from "@/components/MenuLateral";
-import { Spin } from "antd";
 import AuthContext from "@/contexts/AuthContext";
-
-export default function Estableciminetos() {
-  const [establecimiento, setEstablecimiento] = useState();
-  const [load, setLoad] = useState(false);
-  const [cambio, setCambio] = useState();
+import FormRepresentate from "./components/FormRepresentate";
+import { Spin } from "antd";
+export default function RepresentanteLegal() {
   let { authTokens, user } = useContext(AuthContext);
-  //const cleanToken = authTokens.replace(/"/g, "");
+  const [representante, setRepresentante] = useState();
+  const [cambio, setCambio] = useState();
+  const [load, setLoad] = useState(false);
   useEffect(() => {
     const fetchEstablecimiento = async () => {
       try {
         const response = await axios.get(
-          "http://regionales.app.informaticapp.com:3033/api/v1/establecimiento",
+          "http://regionales.app.informaticapp.com:3033/api/v1/representante-legal",
           {
             headers: {
               Authorization: `Bearer ${authTokens.token}`,
@@ -24,7 +21,7 @@ export default function Estableciminetos() {
           }
         );
         console.log("Operacion exitosa:", response);
-        setEstablecimiento(response.data);
+        setRepresentante(response.data);
         setLoad(true);
       } catch (error) {
         console.error("Error al obtener los usuarios:", error);
@@ -33,15 +30,14 @@ export default function Estableciminetos() {
     };
     fetchEstablecimiento();
   }, [cambio]);
-
   if (!load) {
     return <Spin />;
   }
   return (
-    <FormEstablecimiento
-      establecimiento={establecimiento}
-      setCambio={setCambio}
+    <FormRepresentate
+      representante={representante}
       cambio={cambio}
+      setCambio={setCambio}
       token={authTokens.token}
     />
   );

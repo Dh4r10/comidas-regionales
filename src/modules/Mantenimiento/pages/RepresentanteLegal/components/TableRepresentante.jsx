@@ -15,16 +15,16 @@ import {
 } from "@table-library/react-table-library/table";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
-import { node } from "./data";
 import { Button, Spin } from "antd";
-const Component = (props) => {
+const TableRepresentante = (props) => {
   const {
     setMostrar,
-    establecimiento,
+    representante,
     setDatosEstablecimiento,
     setOpen,
-    deleteEstablecimiento,
+    deleteRepresentante,
     setIdEliminar,
+
     spin,
     setSpin,
     setEliminar,
@@ -43,7 +43,7 @@ const Component = (props) => {
   };
 
   const data = {
-    nodes: establecimiento.filter((item) =>
+    nodes: representante.filter((item) =>
       item.correo.toLowerCase().includes(search.toLowerCase())
     ),
   };
@@ -87,44 +87,54 @@ const Component = (props) => {
           <>
             <Header>
               <HeaderRow>
-                <HeaderCell>R.U.C</HeaderCell>
-                <HeaderCell>NOMBRE</HeaderCell>
+                <HeaderCell>D.N.I</HeaderCell>
+                <HeaderCell>NOMBRES</HeaderCell>
+                <HeaderCell>APELLDIOS</HeaderCell>
                 <HeaderCell>CORREO</HeaderCell>
-                <HeaderCell>RAZON SOCIAL</HeaderCell>
                 <HeaderCell>TELEFONO</HeaderCell>
                 <HeaderCell>OPCIONES</HeaderCell>
               </HeaderRow>
             </Header>
 
             <Body>
-              {tableList.map((item, indice) => (
-                <Row key={item.id} item={item} onClick={() => consoles(indice)}>
-                  <Cell>{item.ruc}</Cell>
-                  <Cell>{item.nombre}</Cell>
-                  <Cell>{item.correo}</Cell>
-                  <Cell>{item.razon_social}</Cell>
-                  <Cell>{item.telefono}</Cell>
-                  {/* <Cell>{item.isComplete.toString()}</Cell> */}
-                  <Cell>
-                    <Button
-                      className="bg-[#61b933] text-white mr-3"
-                      onClick={() => {
-                        consoles(item.id);
-                      }}
+              {tableList.map(
+                (item, indice) =>
+                  item.estado && (
+                    <Row
+                      key={item.id}
+                      item={item}
+                      onClick={() => consoles(indice)}
                     >
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </Button>
-                    <Button
-                      className="button-eliminar bg-[#ff4d4f] text-white "
-                      onClick={() => {
-                        deleteEstablecimiento(item.id);
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </Button>
-                  </Cell>
-                </Row>
-              ))}
+                      <Cell>{item.dni}</Cell>
+                      <Cell>{item.nombre}</Cell>
+                      <Cell>
+                        {item.apellido_paterno} {item.apellido_materno}
+                      </Cell>
+                      <Cell>{item.correo}</Cell>
+                      <Cell>{item.telefono}</Cell>
+                      {/* <Cell>{item.isComplete.toString()}</Cell> */}
+                      <Cell>
+                        <Button
+                          className="bg-[#61b933] text-white mr-3"
+                          onClick={() => {
+                            consoles(item.id);
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faPenToSquare} />
+                        </Button>
+                        <Button
+                          className="button-eliminar bg-[#ff4d4f] text-white "
+                          onClick={() => {
+                            deleteRepresentante(item.id);
+                            console.log("hola");
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </Button>
+                      </Cell>
+                    </Row>
+                  )
+              )}
             </Body>
           </>
         )}
@@ -133,4 +143,4 @@ const Component = (props) => {
   );
 };
 
-export default Component;
+export default TableRepresentante;

@@ -1,0 +1,13 @@
+.representate {
+  display: grid;
+  grid-template-rows: 0.5fr 3fr;
+  gap: 10px;
+  &-uno {
+    display: flex;
+    align-items: center;
+    button {
+      margin-left: 15px;
+      background-color: #338433;
+    }
+  }
+}
