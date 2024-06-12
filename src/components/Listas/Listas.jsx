@@ -9,40 +9,46 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-// import AuthContext from "@/contexts/AuthContext";
+import AuthContext from "@/contexts/AuthContext";
 import ListasContext from '@/contexts/ListasContext';
-// import { getAxios } from "@/functions/methods";
+import { getAxios } from '@/functions/simpleMethods';
 import data_mock from './MOCK_DATA.json';
 import data_mock2 from './MOCK_DATA2.json';
 
 import './Listas.scss';
 import PaginationListas from './PaginationListas';
+import ThemeContext from '@/contexts/ThemeContext';
+import { useNavigate } from 'react-router-dom';
+
 
 const Listas = (props) => {
-  // let { authTokens } = useContext(AuthContext);
+  let { authTokens } = useContext(AuthContext);
+  let { theme } = useContext(ThemeContext)
   let { reload } = useContext(ListasContext);
 
   const { api, columnsValue, classNameTable, filtrosLista, classNameFiltros, multiDelete, buttonTittle1, buttonTittle2, buttonFunction } =
     props;
 
+  const nagivate = useNavigate();
+
   const [columnFilters, setColumnFilters] = useState([]);
   const [sorting, setSorting] = useState([]);
   const [rowSelection, setRowSelection] = useState({});
   const [filteringSearch, setFilteringSearch] = useState('');
-  // const [dataApi, setDataApi] = useState({});
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
+  const [dataApi, setDataApi] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // const headers = {
-  //     "Content-Type": "application/json",
-  //     Authorization: "Bearer " + String(authTokens?.access),
-  // };
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + String(authTokens?.token),
+  };
 
-  // useEffect(() => {
-  //     getAxios(api, headers, setDataApi, setLoading, setError);
-  // }, [reload]);
+  useEffect(() => {
+    getAxios(api, headers, setDataApi, setLoading, setError);
+  }, [reload]);
 
-  const data = data_mock;
+  const data = dataApi;
 
   const columns = columnsValue(multiDelete);
 
@@ -75,6 +81,7 @@ const Listas = (props) => {
     classNameFiltros,
     setFilteringSearch,
     filteringSearch,
+    nagivate
   );
 
   const numItemsForPage = table.getRowModel().rows.length;
@@ -89,9 +96,10 @@ const Listas = (props) => {
       >
         {filtros}
       </div>
-      <div className="listas">
-        <div className="border-[1px] dark:border-[#242424] overflow-y-auto bg-white">
+      <div className={`listas${theme === "dark" ? "-dark" : ""}`}>
+        <div className="border-[1px] dark:border-[#242424] bg-white">
           <Tabla
+            loading={loading}
             classNameTable={classNameTable}
             table={table}
             numItemsForPage={numItemsForPage}

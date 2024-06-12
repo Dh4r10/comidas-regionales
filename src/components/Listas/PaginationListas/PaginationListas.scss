@@ -1,0 +1,110 @@
+.ant-pagination {
+  &-prev {
+    &:hover a {
+      color: rgb(2, 185, 2) !important;
+    }
+  }
+
+  &-next {
+    &:hover a {
+      color: rgb(2, 185, 2) !important;
+    }
+  }
+
+  &-item {
+    &-active {
+      border-color: rgb(2, 185, 2) !important;
+
+      a {
+        color: rgb(2, 185, 2) !important;
+      }
+    }
+
+    &-link-icon {
+      color: rgb(2, 185, 2) !important;
+    }
+  }
+
+  &-options {
+    .ant-select {
+      &-selector {
+        &:hover {
+          border-color: rgb(93, 139, 93) !important;
+        }
+      }
+    }
+
+    .ant-select-focused {
+      .ant-select-selector {
+        border-color: rgb(93, 139, 93) !important;
+      }
+    }
+  }
+
+  &-dark {
+    .ant-pagination {
+      &-prev {
+        a {
+          color: #b0b0b0 !important;
+        }
+
+        &:hover a {
+          color: #cfcfcf !important;
+        }
+      }
+
+      &-next {
+        a {
+          color: #b0b0b0 !important;
+        }
+
+        &:hover a {
+          color: #cfcfcf !important;
+        }
+      }
+
+      &-item {
+        &-active {
+          border-color: #2e2e2e !important;
+          background-color: #1c1c1c !important;
+
+          a {
+            color: #b8b8b8 !important;
+          }
+        }
+
+        &:hover {
+          background-color: #1e1e1e !important;
+        }
+
+        &-ellipsis {
+          color: #cfcfcf !important;
+        }
+
+        &-link-icon {
+          color: #cfcfcf !important;
+        }
+      }
+
+      &-options {
+        .ant-select {
+          &-selector {
+            border-color: #2e2e2e !important;
+            &:hover {
+              border-color: #494949 !important;
+            }
+          }
+        }
+
+        .ant-select-focused {
+          .ant-select-selector {
+            border-color: #494949 !important;
+            span {
+              color: #cfcfcf !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

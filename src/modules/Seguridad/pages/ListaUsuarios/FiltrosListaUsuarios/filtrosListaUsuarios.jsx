@@ -1,7 +1,7 @@
 import React from 'react';
 import CallFilter from '@/components/Listas/CallFilter';
 import InputFiltros from '@/components/Listas/Filtros/InputFiltros';
-import { gender } from '../data/options';
+import { tipoUsuario } from '../data/options';
 
 export const filtrosListaUsuarios = (
   table,
@@ -19,32 +19,8 @@ export const filtrosListaUsuarios = (
           <CallFilter
             headerGroup={headerGroup}
             num={1}
-            title="ID:"
-            options={gender}
-          />
-          <CallFilter
-            headerGroup={headerGroup}
-            num={2}
-            title="LAST:"
-            options={gender}
-          />
-          <CallFilter
-            headerGroup={headerGroup}
-            num={3}
-            title="NAME:"
-            options={gender}
-          />
-          <CallFilter
-            headerGroup={headerGroup}
-            num={4}
-            title="EMAIL:"
-            options={gender}
-          />
-          <CallFilter
-            headerGroup={headerGroup}
-            num={5}
-            title="GENDER:"
-            options={gender}
+            title="TIPO USUARIO:"
+            options={tipoUsuario}
           />
         </div>
       ))}
