@@ -3,7 +3,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 
 // MODULO DE SALÓN
 import { salonPaths } from "./utils/routes/SalonRoutes";
-import Comedor from "./modules/Salon/pages/Comedor";
+import Comedor from "./modules/Salon/pages/Comedor/Comedor";
 import ListaMesas from "./modules/Salon/pages/ListaMesas";
 
 // MODULO DE SEGURIDAD
