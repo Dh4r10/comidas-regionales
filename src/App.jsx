@@ -28,8 +28,7 @@ function App() {
           element={<ActualizarContrasenia />}
         />
         <Route element={<PrivateRoutes />}>
-          <Route path="/" element={<Navigate to={salonPaths[2].path} />} />
-          <Route path={salonPaths[2].path} element={<Comedor />} />
+          <Route path="/" element={<Navigate to={seguridadPaths[3].path} />} />
 
           <Route path={seguridadPaths[3].path} element={<ListaUsuarios />} />
           <Route path={seguridadPaths[4].path} element={<CrearUsuario />} />
