@@ -17,13 +17,18 @@ import data_mock2 from './MOCK_DATA2.json';
 
 import './Listas.scss';
 import PaginationListas from './PaginationListas';
+import ThemeContext from '@/contexts/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 const Listas = (props) => {
   // let { authTokens } = useContext(AuthContext);
+  let { theme } = useContext(ThemeContext)
   let { reload } = useContext(ListasContext);
 
   const { api, columnsValue, classNameTable, filtrosLista, classNameFiltros, multiDelete, buttonTittle1, buttonTittle2, buttonFunction } =
     props;
+
+  const nagivate = useNavigate();
 
   const [columnFilters, setColumnFilters] = useState([]);
   const [sorting, setSorting] = useState([]);
@@ -75,6 +80,7 @@ const Listas = (props) => {
     classNameFiltros,
     setFilteringSearch,
     filteringSearch,
+    nagivate
   );
 
   const numItemsForPage = table.getRowModel().rows.length;
@@ -89,8 +95,8 @@ const Listas = (props) => {
       >
         {filtros}
       </div>
-      <div className="listas">
-        <div className="border-[1px] dark:border-[#242424] overflow-y-auto bg-white">
+      <div className={`listas${theme === "dark" ? "-dark" : ""}`}>
+        <div className="border-[1px] dark:border-[#242424] bg-white">
           <Tabla
             classNameTable={classNameTable}
             table={table}

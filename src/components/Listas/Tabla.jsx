@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { flexRender } from '@tanstack/react-table';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -7,7 +7,12 @@ import {
   faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
 import IndeterminateCheckbox from './IndeterminateCheckbox';
+import { Button, ConfigProvider } from 'antd';
+import ThemeContext from '@/contexts/ThemeContext';
 const Tabla = (props) => {
+
+  let { theme } = useContext(ThemeContext)
+
   const { numItemsForPage, totalItems, table, classNameTable, rowSelection, multiDelete, buttonTittle1, buttonTittle2, buttonFunction, } = props;
 
   const rowsSelect = Object.keys(rowSelection);
@@ -76,7 +81,7 @@ const Tabla = (props) => {
         </tbody>
 
         {multiDelete && (
-          <tfoot className="h-14">
+          <tfoot className="h-14 bg-white dark:bg-[#1C1C1C]">
             <tr>
               <td className="p-1">
                 <IndeterminateCheckbox
@@ -88,19 +93,29 @@ const Tabla = (props) => {
                 />
               </td>
               <td colSpan={20}>
-                <button
-                  className="border p-2 text-sm text-gray-600 hover:bg-red-400 hover:border-red-500 hover:text-white rounded-[4px]"
-                  onClick={() => {
-                    const newIds = []
-                    for (let key in rowsSelect) {
-                      newIds.push(...ids, { id: table.getRowModel().rows[rowsSelect[key]].original.id })
-                    }
-                    buttonFunction(newIds)
-                  }}
-                >
-                  {<FontAwesomeIcon icon={faTrashCan} />} {buttonTittle1}{" "}
-                  {rowsSelect.length} {buttonTittle2}
-                </button>
+                <ConfigProvider theme={{
+                  components: {
+                    Button: {
+                      colorBgContainer: "none"
+                    },
+                  }
+                }} >
+                  <Button
+                    className="rounded-[2px] h-9"
+                    type='primary'
+                    danger={true}
+                    onClick={() => {
+                      const newIds = []
+                      for (let key in rowsSelect) {
+                        newIds.push(...ids, { id: table.getRowModel().rows[rowsSelect[key]].original.id })
+                      }
+                      buttonFunction(newIds)
+                    }}
+                  >
+                    {<FontAwesomeIcon icon={faTrashCan} />} {buttonTittle1}{" "}
+                    {rowsSelect.length} {buttonTittle2}
+                  </Button>
+                </ConfigProvider>
               </td>
             </tr>
           </tfoot>

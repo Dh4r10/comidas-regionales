@@ -1,0 +1,88 @@
+.select-filtros {
+  .ant-select {
+    &-selector {
+      &:hover {
+        border-color: rgb(2, 185, 2) !important;
+      }
+    }
+
+    &-focused {
+      .ant-select {
+        &-selector {
+          border-color: rgb(2, 185, 2) !important;
+        }
+      }
+    }
+  }
+
+  &-dark {
+    .ant-select {
+      &-selector {
+        border-color: #2e2e2e !important;
+        &:hover {
+          border-color: #454545 !important;
+        }
+      }
+
+      &-focused {
+        .ant-select {
+          &-selector {
+            border-color: #454545 !important;
+          }
+        }
+      }
+
+      &-open {
+        .ant-select-selection-item {
+          color: rgb(84, 84, 84) !important;
+        }
+      }
+    }
+  }
+}
+
+.input-filtros {
+  .ant-input {
+    &-wrapper {
+      span {
+        color: #9a9a9a !important;
+      }
+
+      input {
+        background: none;
+        color: rgb(172, 172, 172);
+
+        &:hover {
+          border-color: rgb(2, 185, 2) !important;
+        }
+        &:focus {
+          border-color: rgb(2, 185, 2) !important;
+        }
+      }
+    }
+  }
+
+  &-dark {
+    .ant-input {
+      &-wrapper {
+        span {
+          color: #424242 !important;
+        }
+
+        input {
+          border-color: #2e2e2e !important;
+          background: none;
+          color: rgb(172, 172, 172);
+
+          &:hover {
+            border-color: #454545 !important;
+          }
+
+          &:focus {
+            border-color: #454545 !important;
+          }
+        }
+      }
+    }
+  }
+}

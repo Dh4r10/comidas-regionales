@@ -98,7 +98,7 @@ const MenuLateral = (props) => {
           </div>
         </ConfigProvider>
       </div>
-      <div className="menu-lateral__content mx-4 gap-1">
+      <div className="menu-lateral__content gap-1 overflow-y-auto px-4">
         <div className="flex items-center py-1">
           <BreadcrumbCN rutas={totalRoutes} />
         </div>
