@@ -16,7 +16,7 @@ export default function Sucursales() {
           "http://localhost:8000/api/v1/establecimiento"
         );
         const reponseS = await axios.get(
-          "http://localhost:8000/api/v1/sucursales"
+          "http://localhost:8000/api/v1/sucursales/1"
         );
         console.log("Operacion exitosa:", response);
         setEstablecimiento(response.data);

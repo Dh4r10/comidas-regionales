@@ -4,9 +4,11 @@ import axios from "axios";
 import FormEstablecimiento from "./components/FormEstablecimiento";
 import MenuLateral from "@/components/MenuLateral";
 import { Spin } from "antd";
+
 export default function Estableciminetos() {
   const [establecimiento, setEstablecimiento] = useState();
   const [load, setLoad] = useState(false);
+  const [cambio, setCambio] = useState();
 
   useEffect(() => {
     const fetchEstablecimiento = async () => {
@@ -23,9 +25,15 @@ export default function Estableciminetos() {
       }
     };
     fetchEstablecimiento();
-  }, []);
+  }, [cambio]);
   if (!load) {
     return <Spin />;
   }
-  return <FormEstablecimiento establecimiento={establecimiento} />;
+  return (
+    <FormEstablecimiento
+      establecimiento={establecimiento}
+      setCambio={setCambio}
+      cambio={cambio}
+    />
+  );
 }

@@ -2,9 +2,7 @@ import { createContext, useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import {
-  LOGIN_TOKEN_API,
-} from "../api/SeguridadAPI";
+import { LOGIN_TOKEN_API } from "../api/SeguridadAPI";
 import { toast } from "react-toastify";
 
 const AuthContext = createContext();
@@ -27,22 +25,30 @@ export const AuthProvider = ({ children }) => {
       ? jwtDecode(localStorage.getItem("authTokens"))
       : null
   );
-
+  console.log(user);
   const loginUser = (values) => {
     const { username, password } = values;
 
     axios
-      .post(LOGIN_TOKEN_API, {
-        username: username,
-        password: password,
-      })
+      .post(
+        LOGIN_TOKEN_API,
+        {
+          username: username,
+          password: password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then(function (response) {
         setAuthTokens(response.data);
         console.log(response);
-        localStorage.setItem("authTokens", response.data.token)
+        localStorage.setItem("authTokens", response.data.token);
         setUser(jwtDecode(response.data.token));
         navigate("/");
-        console.log(response)
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);

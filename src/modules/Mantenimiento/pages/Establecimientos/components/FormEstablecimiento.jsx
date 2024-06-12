@@ -13,6 +13,7 @@ import {
   deleteAxios,
   postAxios,
 } from "@/modules/Mantenimiento/components/methods";
+import defa from "../../../../../../public/img/background_login.jpg";
 //Para los datos del local
 import logoEstablecimiento from "/public/img/image.png";
 const FormSchema = z.object({
@@ -43,13 +44,16 @@ import { SelectForm } from "./SelectForm";
 import Component from "@/modules/Mantenimiento/components/Table";
 import ModalFormRepresentante from "@/modules/Mantenimiento/components/ModalFormRepresentante";
 export default function FormEstablecimiento(props) {
-  const { establecimiento } = props;
+  const [idEliminar, setIdEliminar] = useState();
+  console.log(idEliminar);
+  const { establecimiento, setCambio, cambio } = props;
   const [datosEstablecimiento, setDatosEstablecimiento] = useState(
     establecimiento[0]
   );
   const [open, setOpen] = useState(false);
   const { sitio_web, ruc, representante_legal, logo, razon_social } =
     datosEstablecimiento;
+  const img = logo || defa;
   const { nombre, apellido_materno, apellido_paterno } = representante_legal;
   const nameRepresendate = `${nombre} ${apellido_paterno} ${apellido_materno}`;
   const [mostrar, setMostrar] = useState(true);
@@ -69,6 +73,7 @@ export default function FormEstablecimiento(props) {
   });
   const [data, setData] = useState();
   const [openI, setOpenI] = useState(false);
+  const [spin, setSpin] = useState(false);
   const URLESTABLECIMIENTO = "http://localhost:8000/api/v1/establecimiento";
   async function onSubmit(values) {
     setOpen(true);
@@ -77,15 +82,15 @@ export default function FormEstablecimiento(props) {
   }
 
   function postEstablecimiento() {
-    postAxios(URLESTABLECIMIENTO, data);
+    postAxios(URLESTABLECIMIENTO, data, setCambio, cambio, setSpin);
+    setCambio(!cambio);
     setOpen(false);
   }
 
-  function deleteEstablecimiento() {
-    url = `http://localhost:8000/api/v1/establecimiento/${datosEstablecimiento.id}`;
-    deleteAxios(url);
+  async function deleteEstablecimiento(id) {
+    const url = `http://localhost:8000/api/v1/establecimiento/${id}`;
+    deleteAxios(url, setCambio, cambio, setSpin);
   }
-
   return (
     <>
       <Form {...form}>
@@ -129,6 +134,9 @@ export default function FormEstablecimiento(props) {
                   setDatosEstablecimiento={setDatosEstablecimiento}
                   setOpen={setOpen}
                   deleteEstablecimiento={deleteEstablecimiento}
+                  setIdEliminar={setIdEliminar}
+                  spin={spin}
+                  setSpin={setSpin}
                 />
               </div>
 
@@ -137,7 +145,7 @@ export default function FormEstablecimiento(props) {
                   <>
                     <div className="flex justify-center ">
                       <img
-                        src={logo}
+                        src={img}
                         alt="logo.png"
                         className="establecimiento-tabla_informacion-foto"
                       />

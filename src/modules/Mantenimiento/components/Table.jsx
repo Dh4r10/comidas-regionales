@@ -16,8 +16,7 @@ import {
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 import { node } from "./data";
-import { Button } from "antd";
-
+import { Button, Spin } from "antd";
 const Component = (props) => {
   const {
     setMostrar,
@@ -25,6 +24,9 @@ const Component = (props) => {
     setDatosEstablecimiento,
     setOpen,
     deleteEstablecimiento,
+    setIdEliminar,
+    spin,
+    setSpin,
   } = props;
   function consoles(id) {
     const datosEstablecimiento = establecimiento[id - 1];
@@ -61,7 +63,9 @@ const Component = (props) => {
       `,
     },
   ]);
-
+  if (spin) {
+    return <Spin />;
+  }
   return (
     <div>
       <label htmlFor="search" className="ml-2">
@@ -113,7 +117,9 @@ const Component = (props) => {
                     </Button>
                     <Button
                       className="button-eliminar bg-[#ff4d4f] text-white "
-                      onClick={deleteEstablecimiento}
+                      onClick={() => {
+                        deleteEstablecimiento(item.id);
+                      }}
                     >
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
