@@ -13,4 +13,13 @@ export const totalRoutes = [
     unionPath: "comedor/",
     alias: "COMEDOR",
   },
+
+  {
+    id: 3,
+    name: "lista-ventas",
+    path: "/lista-ventas",
+    unionPath: "lista-ventas/",
+    alias: "LISTA DE VENTAS",
+  },
+
 ];

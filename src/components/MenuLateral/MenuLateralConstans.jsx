@@ -113,7 +113,7 @@ export const ITEMS = [
     children: [
       {
         key: "41",
-        label: "Option 1",
+        label: "Lista de Ventas",
       },
       {
         key: "42",

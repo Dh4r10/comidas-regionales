@@ -7,6 +7,7 @@ import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { salonPaths } from "@/utils/routes/SalonRoutes";
 import AuthContext from "@/contexts/AuthContext";
+import { ventasPaths } from "@/utils/routes/VentasRoutes";
 
 const levelKeys = getLevelKeys(ITEMS);
 
@@ -41,6 +42,9 @@ const MenuAnt = (props) => {
     }
     if (key == "6"){
       logoutUser();
+    }
+    if(key==="41"){
+      navigate(ventasPaths[0].path);
     }
   };
 
