@@ -22,7 +22,7 @@ function Productos() {
   return (
     <div className="grid-cols-1 h-full">
       <p className="text-base text-slate-950 dark:text-slate-300">
-        REGISTRO DE INSUMOS:
+        MOSTRAR INSUMOS:
         <span className="text-sm text-slate-800 dark:text-slate-400">
           Lista de Insumos
         </span>
@@ -30,7 +30,7 @@ function Productos() {
       <div className="pb-10">
         <div className=" margin bg-[#009444] rounded-t-md rounded-b-md shadow-md dark:shadow-[#2b2b2b] p-2">
           <div className="text-center">
-            <Link to={comprasPaths[3].unionPath}>
+            <Link to={comprasPaths[8].unionPath}>
               <button className="custom-new w-auto" type="button" onClick="">
                 <FontAwesomeIcon icon={faPlus} />
                 &nbsp; Nuevo

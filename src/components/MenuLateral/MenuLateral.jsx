@@ -38,31 +38,31 @@ const MenuLateral = (props) => {
               Button:
                 theme === "dark"
                   ? {
-                      colorPrimary: "#099f1b",
-                      primaryShadow: "none",
-                      colorPrimaryHover: "#0BB21F",
-                      colorPrimaryActive: "#0BB21F",
-                    }
+                    colorPrimary: "#099f1b",
+                    primaryShadow: "none",
+                    colorPrimaryHover: "#0BB21F",
+                    colorPrimaryActive: "#0BB21F",
+                  }
                   : {
-                      colorPrimary: "#009444",
-                      primaryShadow: "none",
-                      colorPrimaryHover: "#1AA02A",
-                      colorPrimaryActive: "#1AA02A",
-                    },
+                    colorPrimary: "#009444",
+                    primaryShadow: "none",
+                    colorPrimaryHover: "#1AA02A",
+                    colorPrimaryActive: "#1AA02A",
+                  },
               Menu:
                 theme === "dark"
                   ? {
-                      itemBorderRadius: "none",
-                      darkItemSelectedBg: "#1C1C1C",
-                      darkSubMenuItemBg: "#252525",
-                      darkItemBg: "#1C1C1C",
-                      darkPopupBg: "#1C1C1C",
-                    }
+                    itemBorderRadius: "none",
+                    darkItemSelectedBg: "#1C1C1C",
+                    darkSubMenuItemBg: "#252525",
+                    darkItemBg: "#1C1C1C",
+                    darkPopupBg: "#1C1C1C",
+                  }
                   : {
-                      itemBorderRadius: "none",
-                      itemSelectedBg: "#CBFFE1",
-                      itemSelectedColor: "#009444",
-                    },
+                    itemBorderRadius: "none",
+                    itemSelectedBg: "#CBFFE1",
+                    itemSelectedColor: "#009444",
+                  },
               Switch: {
                 colorPrimary: "#099F1B",
                 colorPrimaryHover: "#0CBC22",
@@ -74,9 +74,8 @@ const MenuLateral = (props) => {
             <Button
               type="primary"
               onClick={toggleCollapsed}
-              className={`rounded-none w-20 h-14 border-b-0 border-t-0 ${
-                collapsed && "border-r-0"
-              }`}
+              className={`rounded-none w-20 h-14 border-b-0 border-t-0 ${collapsed && "border-r-0"
+                }`}
             >
               {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </Button>

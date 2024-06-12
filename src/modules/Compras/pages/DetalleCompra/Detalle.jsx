@@ -59,13 +59,13 @@ function Detalle() {
               <th className="px-4 py-2 w-10 text-sm" scope="row">
                 1
               </th>
-              <td className="px-4 py-2 w-20 text-sm">ALMACEN 1</td>
-              <td className="px-4 py-2 w-20 text-sm">PRODUCTOS DEL LOTE 3</td>
-              <td className="px-4 py-2 w-32text-sm">@mdo</td>
-              <td className="px-4 py-2 w-32 text-sm">SAN MARTIN</td>
-              <td className="px-4 py-2 w-32 text-sm">TARAPOTO</td>
-              <td className="px-4 py-2 w-32 text-sm">MORALES</td>
-              <td className="px-4 py-2 w-32 text-sm">FRENTE A...</td>
+              <td className="px-4 py-2 w-20 text-sm">Arroz</td>
+              <td className="px-4 py-2 w-20 text-sm">102</td>
+              <td className="px-4 py-2 w-32text-sm">A002</td>
+              <td className="px-4 py-2 w-32 text-sm">10</td>
+              <td className="px-4 py-2 w-32 text-sm">160</td>
+              <td className="px-4 py-2 w-32 text-sm">07/05/2024</td>
+              <td className="px-4 py-2 w-32 text-sm">07/05/2024</td>
               <td className="px-4 py-2 w-10 text-sm">
                 <button
                   className="bg-[#186c3d] rounded px-2 py-1 mr-2"

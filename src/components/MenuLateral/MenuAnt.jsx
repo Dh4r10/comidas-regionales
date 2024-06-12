@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { getLevelKeys } from "./MenuLateralFunctions";
 import { ITEMS } from "./MenuLateralConstans";
@@ -6,11 +6,14 @@ import { ITEMS } from "./MenuLateralConstans";
 import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { salonPaths } from "@/utils/routes/SalonRoutes";
+import AuthContext from "@/contexts/AuthContext";
 import { comprasPaths } from "@/utils/routes/ComprasRoutes";
 
 const levelKeys = getLevelKeys(ITEMS);
 
 const MenuAnt = (props) => {
+  let { logoutUser } = useContext(AuthContext);
+
   const { collapsed, theme } = props;
   const navigate = useNavigate();
 
@@ -30,7 +33,7 @@ const MenuAnt = (props) => {
     setSelectedKeys([key]);
     localStorage.setItem("selectedKeys", [key]);
 
-    if (key === "51") {
+    if (key === "511") {
       navigate(salonPaths[0].path);
     }
     if (key === "52") {
@@ -53,6 +56,15 @@ const MenuAnt = (props) => {
     }
     if (key === "36") {
       navigate(comprasPaths[7].path);
+    }
+    if (key == "6") {
+      logoutUser();
+    }
+    if (key === "37") {
+      navigate(comprasPaths[9].path);
+    }
+    if (key === "38") {
+      navigate(comprasPaths[10].path);
     }
   };
 

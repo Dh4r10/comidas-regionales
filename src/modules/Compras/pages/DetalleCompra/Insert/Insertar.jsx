@@ -100,7 +100,7 @@ function Insertar() {
                           <div className="pb-4">
                             <label htmlFor="cantidad">Cantidad:</label>
                             <input
-                              type="text"
+                              type="number"
                               id="cantidad"
                               name="cantidad"
                               required

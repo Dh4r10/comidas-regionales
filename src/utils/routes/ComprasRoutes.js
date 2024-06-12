@@ -29,10 +29,10 @@ export const comprasPaths = [
   },
   {
     id: 5,
-    name: "productos",
-    path: "/productos",
-    unionPath: "productos/",
-    alias: "PRODUCTOS",
+    name: "insumos",
+    path: "/insumos",
+    unionPath: "insumos/",
+    alias: "INSUMOS",
   },
   {
     id: 6,
@@ -54,5 +54,26 @@ export const comprasPaths = [
     path: "/insertar",
     unionPath: "insertar/",
     alias: "INSERTAR",
+  },
+  {
+    id: 9,
+    name: "RegistrarInsumo",
+    path: "/RegistrarInsumo",
+    unionPath: "RegistrarInsumo/",
+    alias: "REGISTRAR INSUMO",
+  },
+  {
+    id: 10,
+    name: "ubicacion",
+    path: "/ubicacion",
+    unionPath: "ubicacion/",
+    alias: "UBICACIÓN",
+  },
+  {
+    id: 11,
+    name: "pasillo",
+    path: "/pasillo",
+    unionPath: "pasillo/",
+    alias: "PASILLO",
   },
 ];

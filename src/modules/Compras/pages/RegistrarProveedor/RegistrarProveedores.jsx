@@ -6,6 +6,9 @@ import {
   faArrowLeft,
   faBroom,
 } from "@fortawesome/free-solid-svg-icons";
+import axiosInstance from "@/utils/axiosConfig";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./styles.css";
 
 function RegistrarProveedor() {
@@ -56,13 +59,33 @@ function RegistrarProveedor() {
       [name]: value,
     });
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleReset();
+    const data = {
+      ruc,
+      tipoRuc: identificationType,
+      ...formData,
+    };
+    console.log("Enviando datos:", data);
+    try {
+      const response = await axiosInstance.post("/proveedores", data);
+      console.log("Respuesta del servidor:", response);
+      if (response.status === 201 || response.status === 200) {
+        toast.success("Proveedor registrado con éxito");
+        handleReset();
+      } else {
+        console.log("Estado de respuesta inesperado:", response.status);
+      }
+    } catch (error) {
+      console.error("Error registrando proveedor:", error);
+      toast.error("Hubo un error al registrar el proveedor");
+    }
   };
 
   return (
     <div className="grid-cols-1 h-full">
+      <ToastContainer />
       <p className="text-base text-slate-950 dark:text-slate-300">
         REGISTRAR:
         <span className="text-sm text-slate-800 dark:text-slate-400">
@@ -77,7 +100,7 @@ function RegistrarProveedor() {
               <div className="rounded-md shadow-sm -space-y-px">
                 <label htmlFor="identification">Tipo RUC:</label>
                 <select
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                   id="identification"
                   name="identification"
                   onChange={handleIdentificationChange}
@@ -105,26 +128,27 @@ function RegistrarProveedor() {
           </div>
         </div>
 
-        <div className=" grid grid-cols-1 pb-10 dark:shadow-[#2b2b2b]">
+        <div className="grid grid-cols-1 pb-10 dark:shadow-[#2b2b2b]">
           <div className="centrar bg-[#dbe1ed] dark:bg-[#202020]">
             <div className="mx-10 dark:bg-opacity-10 space-y-6 ">
               <div className="content-center">
                 <div className="rounded-md shadow-sm -space-y-px">
-                  {identificationType === "natural" && (
-                    <div className=" bg-[#dbe1ed] dark:bg-[#202020] py-10">
-                      <div id="naturalFields">
+                  {(identificationType === "natural" ||
+                    identificationType === "juridica") && (
+                    <div className="bg-[#dbe1ed] dark:bg-[#202020] py-10">
+                      <div>
                         <div className="pb-4">
-                          <label htmlFor="natural">Ingresar tu RUC</label>
+                          <label htmlFor="ruc">Ingresar tu RUC</label>
                           <input
                             type="text"
-                            id="natural"
-                            name="natural"
+                            id="ruc"
+                            name="ruc"
                             placeholder="RUC requerido"
                             value={ruc}
                             onChange={handleRucChange}
                             pattern="\d{11}"
                             maxLength="11"
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                             required
                             title="El RUC debe tener 11 dígitos"
                           />
@@ -138,7 +162,7 @@ function RegistrarProveedor() {
                             value={formData.razonSocial}
                             onChange={handleInputChange}
                             required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                             placeholder="Ingrese Razón Social"
                           />
                         </div>
@@ -152,7 +176,7 @@ function RegistrarProveedor() {
                             value={formData.correo}
                             onChange={handleInputChange}
                             required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                             placeholder="Ingrese su correo electrónico"
                           />
                         </div>
@@ -169,7 +193,7 @@ function RegistrarProveedor() {
                             pattern="[0-9]{9}"
                             maxLength="9"
                             required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                             title="El número de teléfono debe tener 9 dígitos"
                           />
                         </div>
@@ -178,7 +202,7 @@ function RegistrarProveedor() {
                           <div></div>
                           <div className="text-right">
                             <button
-                              className="custom-submit-r  w-auto mt-5"
+                              className="custom-submit-r w-auto mt-5"
                               type="reset"
                               value="Limpiar"
                               onClick={handleReset}
@@ -189,98 +213,7 @@ function RegistrarProveedor() {
                           </div>
                           <div className="text-right">
                             <button
-                              className="custom-submit  w-auto  mt-5"
-                              type="submit"
-                            >
-                              <FontAwesomeIcon icon={faFloppyDisk} />
-                              &nbsp; Guardar
-                            </button>
-                          </div>
-                          <div></div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  {identificationType === "juridica" && (
-                    <div className=" bg-[#dbe1ed] dark:bg-[#202020] py-10">
-                      <div id="juridicaFields">
-                        <div className="pb-4">
-                          <label htmlFor="juridica">Ingresar tu RUC</label>
-                          <input
-                            type="text"
-                            id="juridica"
-                            name="juridica"
-                            placeholder="RUC requerido"
-                            value={ruc}
-                            onChange={handleRucChange}
-                            pattern="\d{11}"
-                            maxLength="11"
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
-                            required
-                            title="El RUC debe tener 11 dígitos"
-                          />
-                        </div>
-                        <div className="pb-4">
-                          <label htmlFor="razonSocial">Razon Social:</label>
-                          <input
-                            type="text"
-                            id="razonSocial"
-                            name="razonSocial"
-                            value={formData.razonSocial}
-                            onChange={handleInputChange}
-                            required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
-                            placeholder="Ingrese Razón Social"
-                          />
-                        </div>
-
-                        <div className="pb-4">
-                          <label htmlFor="correo">Correo Electrónico:</label>
-                          <input
-                            type="email"
-                            id="correo"
-                            name="correo"
-                            value={formData.correo}
-                            onChange={handleInputChange}
-                            required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
-                            placeholder="Ingrese su correo electrónico"
-                          />
-                        </div>
-
-                        <div className="pb-4">
-                          <label htmlFor="telefono">Teléfono:</label>
-                          <input
-                            type="tel"
-                            id="telefono"
-                            name="telefono"
-                            value={formData.telefono}
-                            onChange={handleInputChange}
-                            placeholder="Ingrese su número de teléfono"
-                            pattern="[0-9]{9}"
-                            maxLength="9"
-                            required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
-                            title="El número de teléfono debe tener 9 dígitos"
-                          />
-                        </div>
-
-                        <div className="grid grid-cols-3">
-                          <div></div>
-                          <div className="text-right">
-                            <button
-                              className="custom-submit-r  w-auto mt-5"
-                              type="reset"
-                              value="Limpiar"
-                              onClick={handleReset}
-                            >
-                              <FontAwesomeIcon icon={faBroom} />
-                              &nbsp; Limpiar
-                            </button>
-                          </div>
-                          <div className="text-right">
-                            <button
-                              className="custom-submit  w-auto  mt-5"
+                              className="custom-submit w-auto mt-5"
                               type="submit"
                             >
                               <FontAwesomeIcon icon={faFloppyDisk} />

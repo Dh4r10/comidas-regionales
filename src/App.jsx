@@ -3,11 +3,10 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 
 // MODULO DE SALÓN
 import { salonPaths } from "./utils/routes/SalonRoutes";
-import Prueba from "./modules/Salon/pages/Prueba";
-import PruebaDos from "./modules/Salon/pages/PruebaDos";
+import Comedor from "./modules/Salon/pages/Comedor";
+import ListaMesas from "./modules/Salon/pages/ListaMesas";
 
 // MODULO DE SEGURIDAD
-
 import { seguridadPaths } from "./utils/routes/SeguridadRoutes";
 import IniciarSesion from "./modules/Seguridad/pages/IniciarSesion";
 import ReestablecerContrasenia from "./modules/Seguridad/pages/ReestablecerContrasenia";
@@ -19,10 +18,13 @@ import Compras from "./modules/Compras/pages/Compras";
 import Proveedores from "./modules/Compras/pages/Proveedores";
 import RegistrarProveedor from "./modules/Compras/pages/RegistrarProveedor";
 import RealizarCompra from "./modules/Compras/pages/RealizarCompras/RealizarCompra";
-import Productos from "./modules/Compras/pages/Productos";
+import Productos from "./modules/Compras/pages/Insumos";
 import Almacen from "./modules/Compras/pages/Almacen";
 import Detalle from "./modules/Compras/pages/DetalleCompra/Detalle";
 import Insertar from "./modules/Compras/pages/DetalleCompra/Insert/Insertar";
+import RegistrarInsumo from "./modules/Compras/pages/Insumos/RegistrarInsumo";
+import Ubicacion from "./modules/Compras/pages/Ubicacion/Ubicacion";
+import Pasillo from "./modules/Compras/pages/Pasillo";
 
 function App() {
   return (
@@ -38,9 +40,9 @@ function App() {
           element={<ActualizarContrasenia />}
         />
         <Route element={<PrivateRoutes />}>
-          <Route path="/" element={<Navigate to={salonPaths[0].path} />} />
-          <Route path={salonPaths[0].path} element={<Prueba />} />
-          <Route path={salonPaths[1].path} element={<PruebaDos />} />
+          <Route path="/" element={<Navigate to={salonPaths[1].path} />} />
+          <Route path={salonPaths[0].path} element={<ListaMesas />} />
+          <Route path={salonPaths[1].path} element={<Comedor />} />
           <Route path={comprasPaths[0].path} element={<Compras />} />
           <Route path={comprasPaths[1].path} element={<Proveedores />} />
           <Route
@@ -58,6 +60,12 @@ function App() {
             path={comprasPaths[6].path + comprasPaths[7].path}
             element={<Insertar />}
           />
+          <Route
+            path={comprasPaths[4].path + comprasPaths[8].path}
+            element={<RegistrarInsumo />}
+          />
+          <Route path={comprasPaths[9].path} element={<Ubicacion />} />
+          <Route path={comprasPaths[10].path} element={<Pasillo />} />
         </Route>
       </Routes>
     </div>
