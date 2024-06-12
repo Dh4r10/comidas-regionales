@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
       ? JSON.stringify(localStorage.getItem("authTokens"))
       : null
   );
-
+  console.log(authTokens);
   const [user, setUser] = useState(() =>
     localStorage.getItem("authTokens")
       ? jwtDecode(localStorage.getItem("authTokens"))
