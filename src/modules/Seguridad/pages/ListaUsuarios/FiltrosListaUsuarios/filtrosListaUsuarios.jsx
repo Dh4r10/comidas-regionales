@@ -7,7 +7,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ButtonAnt from '@/components/ButtonAnt';
 import { salonPaths } from '@/utils/routes/SalonRoutes';
 
-export const filtrosListaMesas = (
+export const filtrosListaUsuarios = (
   table,
   classNameFiltros,
   setFilteringSearch,
