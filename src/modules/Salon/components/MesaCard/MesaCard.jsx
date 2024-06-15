@@ -11,7 +11,7 @@ const MesaCard = (props) => {
 
   const { theme } = useContext(ThemeContext)
 
-  const { numeroMesa, id, tipoMesa, capacidad, estado, ocupado, onSelected, idSelected } = props;
+  const { numeroMesa, id, tipoMesa, capacidad, estado, ocupado, reservado, onSelected, idSelected } = props;
 
   if (estado) {
     return (
@@ -31,7 +31,7 @@ const MesaCard = (props) => {
           <div className="py-3 px-1">
             <p>Tipo de mesa: <span className="font-semibold">{capitalizeFirstLetter(tipoMesa)}</span></p>
             <p>Capacidad: <span className="font-semibold">{capacidad}</span></p>
-            <p><span className="font-semibold">{!estado ? "Fuera de servicio" : ocupado ? "Ocupado" : "Disponible"}</span></p>
+            <p><span className="font-semibold">{!estado ? "Fuera de servicio" : ocupado ? "Ocupado" : reservado ? "Reservado" : "Disponible"}</span></p>
           </div>
           <p className="text-xs text-right text-slate-400 dark:text-[#949494]">Estado: <span className={`${estado ? "text-green-500" : "text-red-500"}`}>{estado ? "Activo" : "Sin servicio"}</span></p>
         </div>
@@ -55,7 +55,7 @@ const MesaCard = (props) => {
           <div className="py-3 px-1">
             <p>Tipo de mesa: <span className="font-semibold">{capitalizeFirstLetter(tipoMesa)}</span></p>
             <p>Capacidad: <span className="font-semibold">{capacidad}</span></p>
-            <p><span className="font-semibold">{!estado ? "Fuera de servicio" : ocupado ? "Ocupado" : "Disponible"}</span></p>
+            <p><span className="font-semibold">{!estado ? "Fuera de servicio" : ocupado ? "Ocupado" : reservado ? "Reservado" : "Disponible"}</span></p>
           </div>
           <p className="text-xs text-right text-slate-300 dark:text-[#5d5d5d]">Estado: <span className={`${estado ? "text-green-500" : "text-red-500"}`}>{estado ? "Activo" : "Sin servicio"}</span></p>
         </div>

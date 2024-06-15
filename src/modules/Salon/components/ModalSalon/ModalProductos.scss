@@ -1,0 +1,48 @@
+.modal-productos {
+  .ant-modal-content {
+    border-radius: 0;
+  }
+
+  .linea-texto {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  &__body {
+    &-info-producto {
+      display: grid;
+
+      &-data {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    &-precios {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: end;
+    }
+
+    .linea-texto-totales {
+      display: flex;
+      align-items: center;
+
+      &::before,
+      &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+}

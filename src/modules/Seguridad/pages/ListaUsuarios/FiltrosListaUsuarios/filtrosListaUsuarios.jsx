@@ -18,7 +18,7 @@ export const filtrosListaUsuarios = (
         >
           <CallFilter
             headerGroup={headerGroup}
-            num={1}
+            num={3}
             title="TIPO USUARIO:"
             options={tipoUsuario}
           />

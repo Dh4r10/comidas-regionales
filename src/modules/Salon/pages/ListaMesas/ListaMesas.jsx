@@ -5,6 +5,7 @@ import { filtrosListaMesas } from './FiltrosListaMesas/filtrosListaMesas';
 
 import './ListaMesas.scss';
 import './FiltrosListaMesas/FiltrosListaMesas.scss';
+import { MESAS_API } from '@/api/SalonAPI';
 
 const ListaMesas = () => {
 
@@ -15,6 +16,7 @@ const ListaMesas = () => {
     return (
         <div className={`lista-mesas gap-3`}>
             <Listas
+                api={MESAS_API}
                 columnsValue={columnsValue}
                 classNameTable="lista-mesas-table"
                 classNameFiltros="lista-mesas-filtros"

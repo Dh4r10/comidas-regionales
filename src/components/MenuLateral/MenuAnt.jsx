@@ -13,7 +13,7 @@ const levelKeys = getLevelKeys(ITEMS);
 
 const MenuAnt = (props) => {
 
-  let {logoutUser} = useContext(AuthContext)
+  let { logoutUser } = useContext(AuthContext)
 
   const { collapsed, theme } = props;
   const navigate = useNavigate();
@@ -39,10 +39,13 @@ const MenuAnt = (props) => {
     if (key === "512") {
       navigate(salonPaths[0].path + salonPaths[1].path);
     }
-    if (key === "52") {
-      navigate(salonPaths[2].path);
+    if (key === "51") {
+      navigate(salonPaths[0].path);
     }
-    if (key == "6"){
+    if (key === "52") {
+      navigate(salonPaths[1].path);
+    }
+    if (key == "6") {
       logoutUser();
     }
     if (key === "11") {

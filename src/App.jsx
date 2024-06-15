@@ -13,6 +13,7 @@ import ActualizarContrasenia from "./modules/Seguridad/pages/ActualizarContrasen
 import ListaUsuarios from "./modules/Seguridad/pages/ListaUsuarios";
 import InformacionUsuario from "./modules/Seguridad/pages/InformacionUsuario";
 import CrearUsuario from "./modules/Seguridad/pages/CrearUsuario";
+import ListaMesas from "./modules/Salon/pages/ListaMesas";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
           <Route path={seguridadPaths[3].path} element={<ListaUsuarios />} />
           <Route path={seguridadPaths[4].path} element={<CrearUsuario />} />
           <Route path={seguridadPaths[5].path} element={<InformacionUsuario />} />
+
+          <Route path={salonPaths[0].path} element={<ListaMesas />} />
+          <Route path={salonPaths[1].path} element={<Comedor />} />
 
         </Route>
       </Routes>

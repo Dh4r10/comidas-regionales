@@ -17,7 +17,28 @@ export const getAxios = async (
     setLoading(true);
   } catch (error) {
     console.error("Error al hacer la solicitud:", error);
-    setError(error.message);
+    setError(error);
     setLoading(true);
+  }
+};
+
+export const postAxios = async (
+  url,
+  data,
+  headers,
+  setLoading,
+  setError,
+  func
+) => {
+  setLoading(true);
+  try {
+    const response = await axios.post(url, data, { headers });
+    console.log("operacion exitosa:", response);
+    setLoading(false);
+    func();
+  } catch (error) {
+    console.error("Error al hacer la solicitud:", error);
+    setError(error);
+    setLoading(false);
   }
 };

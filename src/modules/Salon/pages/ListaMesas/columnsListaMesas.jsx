@@ -38,35 +38,28 @@ export const columnsValue = (multiDelete) => {
                 cell: info => info.getValue()
             },
             {
-                accessorFn: row => row.last_name,
-                id: "last_name",
+                accessorKey: "numero",
                 cell: info => info.getValue(),
-                header: "LAST"
+                header: "NUMERO"
             },
             {
-                accessorFn: row => `${row.first_name} ${row.last_name}`,
-                id: "fullName",
-                header: "NAME",
+                accessorKey: "tipoMesa",
+                header: "TIPO MESA",
                 cell: info => info.getValue()
             },
             {
-                accessorKey: "email",
-                header: () => "EMAIL",
+                accessorKey: "capacidad",
+                header: () => "CAPACIDAD",
+                cell: info => `${info.getValue()}  personas`
+            },
+            {
+                accessorKey: "area.nombre",
+                header: () => <span>SALON</span>,
+                cell: info => info.getValue()
                 // meta: {
                 //   filterVariant: "select"
                 // }
             },
-            {
-                accessorKey: "gender",
-                header: () => <span>GENDER</span>,
-                // meta: {
-                //   filterVariant: "select"
-                // }
-            },
-            {
-                accessorKey: "ip_address",
-                header: "IP ADDRESS",
-            }
         ]
 
         return columns.filter(Boolean)

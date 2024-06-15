@@ -1,53 +1,64 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ButtonAnt from "@/components/ButtonAnt";
 import MesaCard from "../../components/MesaCard";
-import { mesasData } from "../../data/mesas";
 
 import "./Comedor.scss";
+import AuthContext from "@/contexts/AuthContext";
+import { Spin } from "antd";
+import { getAxios } from "@/functions/simpleMethods";
+import { MESAS_API } from "@/api/SalonAPI";
+import ModalSalon from "../../components/ModalSalon/ModalSalon";
+import PedidoForms from "./Forms/PedidoForms";
+import ProductosForms from "./Forms/ProductosForms";
+import SalonPedidosContext from "@/contexts/SalonPedidosContext";
 
 const Comedor = () => {
 
-  const [idsSelected, setIdsSelected] = useState([24])
+  let { authTokens } = useContext(AuthContext)
+  let { setOpenPedido, idsSelected, setIdsSelected } = useContext(SalonPedidosContext)
 
-  const [selected, setSelected] = useState(localStorage.getItem("selected") ? JSON.parse(localStorage.getItem("selected")) : false)
-  const [idSelected, setIdSelected] = useState(localStorage.getItem("idSelected") ? JSON.parse(localStorage.getItem("idSelected")) : null)
+  // API MESAS
+  const [dataApi, setDataApi] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + String(authTokens?.token),
+  };
+
+  useEffect(() => {
+    getAxios(MESAS_API, headers, setDataApi, setLoading, setError);
+  }, []);
 
   const onSelected = (id) => {
     if (idsSelected.includes(id)) {
-      setSelected(!selected)
-      localStorage.setItem("selected", !selected)
-      setIdSelected(null)
-      localStorage.setItem("idSelected", null)
-
       let idsSelectedFilter = [...idsSelected].filter(idExist => idExist !== id)
       setIdsSelected(idsSelectedFilter)
+      localStorage.setItem("idsSelected", JSON.stringify(idsSelectedFilter))
     } else {
-      setSelected(true)
-      localStorage.setItem("selected", true)
-      setIdSelected(id);
-      localStorage.setItem("idSelected", id)
-
       let idsSelectedCopy = [...idsSelected, id]
       setIdsSelected(idsSelectedCopy)
+      localStorage.setItem("idsSelected", JSON.stringify(idsSelectedCopy))
     }
   }
 
-  console.log("IDS SELECCIONADOS:", idsSelected)
-
-  const handlePedido = () => {
-    console.log("id de mesa para el pedido: " + idSelected)
+  const handlePedido = async () => {
+    console.log(idsSelected)
+    setOpenPedido(true)
   }
 
   const handleReserva = () => {
-    console.log("id de mesa para la reserva: " + idSelected)
+    console.log(idsSelected)
   }
 
   const handleDetalle = () => {
-    console.log("id de mesa para el detalle: " + idSelected)
+    console.log(idsSelected)
   }
 
   const handleLimpiarSeleccion = () => {
     setIdsSelected([])
+    localStorage.setItem("idsSelected", [])
   }
 
   return (
@@ -55,11 +66,17 @@ const Comedor = () => {
       <div className="grid gap-3">
         <h1 className="text-center pb-1 font-semibold">MESAS EXISTENTES</h1>
         <div className="p-3 border-[1px] border-slate-300 dark:border-[#252525]">
-          <div className="mesas__organizacion gap-2">
-            {mesasData.map(mesa => (
-              <MesaCard key={mesa.id} id={mesa.id} numeroMesa={mesa.numeroMesa} tipoMesa={mesa.tipoMesa} capacidad={mesa.capacidad} estado={mesa.estado} ocupado={mesa.opcupado} onSelected={onSelected} idSelected={idsSelected.includes(mesa.id)} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="mesas__organizacion gap-2">
+              {dataApi.map(mesa => (
+                <MesaCard key={mesa.id} id={mesa.id} numeroMesa={mesa.numero} tipoMesa={mesa.tipoMesa} capacidad={mesa.capacidad} estado={mesa.estado} ocupado={mesa.ocupado} reservado={mesa.reservado} onSelected={onSelected} idSelected={idsSelected.includes(mesa.id)} />
+              ))}
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-[40vh]">
+              <Spin />
+            </div>
+          )}
         </div>
       </div>
       <div className="flex justify-between items-start pt-4">
@@ -74,6 +91,8 @@ const Comedor = () => {
           <ButtonAnt disabled={idsSelected.length < 1} htmlType="button" type="primary" tittle="Pedido" onClick={handlePedido} />
         </div>
       </div>
+      <PedidoForms />
+      <ProductosForms />
     </div>
   );
 };

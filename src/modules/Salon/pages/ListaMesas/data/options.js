@@ -1,18 +1,29 @@
-export const gender = [
+export const tipoMesa = [
   {
-    value: '',
-    label: 'TODOS',
+    value: "",
+    label: "TODOS",
   },
   {
-    value: 'Male',
-    label: 'Male',
+    value: "FAMILIAR",
+    label: "FAMILIAR",
   },
   {
-    value: 'Female',
-    label: 'Female',
+    value: "REGULAR",
+    label: "REGULAR",
   },
   {
-    value: 'Genderfluid',
-    label: 'Genderfluid',
+    value: "PAREJA",
+    label: "PAREJA",
+  },
+];
+
+export const salon = [
+  {
+    value: "",
+    label: "TODOS",
+  },
+  {
+    value: "CLASE REGULAR",
+    label: "CLASE REGULAR",
   },
 ];

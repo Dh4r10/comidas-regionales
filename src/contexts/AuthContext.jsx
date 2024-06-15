@@ -6,6 +6,7 @@ import {
   LOGIN_TOKEN_API,
 } from "../api/SeguridadAPI";
 import { toast } from "react-toastify";
+import { ESTABLECIMIENTO_API } from "@/api/MantenimientoAPI";
 
 const AuthContext = createContext();
 
@@ -28,6 +29,8 @@ export const AuthProvider = ({ children }) => {
       : null
   );
 
+  const [establecimientoData, setEstablecimientoData] = useState(() => localStorage.getItem("establecimientoData") ? JSON.parse(localStorage.getItem("establecimientoData")) : null)
+
   const loginUser = (values) => {
     const { username, password } = values;
 
@@ -41,6 +44,7 @@ export const AuthProvider = ({ children }) => {
         console.log(response);
         localStorage.setItem("authTokens", JSON.stringify(response.data))
         setUser(jwtDecode(response.data.token));
+        getDataEstablecimiento(jwtDecode(response.data.token), response.data)
         navigate("/");
         console.log(response)
       })
@@ -56,17 +60,40 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("selectedKeys");
     localStorage.removeItem("stateOpenKeys");
     localStorage.removeItem("authTokens");
+    localStorage.removeItem("establecimientoData")
     navigate("/login");
   };
+
+  const getDataEstablecimiento = async (dataToken, authTokenData) => {
+
+    let idEstablecimiento = dataToken.establecimiento;
+
+    console.log(idEstablecimiento, " ", authTokenData)
+
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + String(authTokenData?.token),
+    };
+
+    try {
+      const response = await axios.get(`${ESTABLECIMIENTO_API}/${idEstablecimiento}`, { headers });
+      console.log("operacion exitosa:", response);
+      setEstablecimientoData(response.data);
+      localStorage.setItem("establecimientoData", JSON.stringify(response.data))
+    } catch (error) {
+      console.error("Error al hacer la solicitud:", error);
+    }
+  }
 
   const contextValue = useMemo(() => {
     return {
       user,
+      establecimientoData,
       loginUser,
       logoutUser,
       authTokens,
     };
-  }, [user, authTokens]);
+  }, [user, authTokens, establecimientoData]);
 
   return (
     <AuthContext.Provider value={contextValue}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CallFilter from '@/components/Listas/CallFilter';
 import InputFiltros from '@/components/Listas/Filtros/InputFiltros';
-import { gender } from '../data/options';
+import { salon, tipoMesa } from '../data/options';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ButtonAnt from '@/components/ButtonAnt';
 import { salonPaths } from '@/utils/routes/SalonRoutes';
@@ -29,33 +29,15 @@ export const filtrosListaMesas = (
           >
             <CallFilter
               headerGroup={headerGroup}
-              num={1}
-              title="ID:"
-              options={gender}
-            />
-            <CallFilter
-              headerGroup={headerGroup}
-              num={2}
-              title="LAST:"
-              options={gender}
-            />
-            <CallFilter
-              headerGroup={headerGroup}
               num={3}
-              title="NAME:"
-              options={gender}
-            />
-            <CallFilter
-              headerGroup={headerGroup}
-              num={4}
-              title="EMAIL:"
-              options={gender}
+              title="TIPO MESA:"
+              options={tipoMesa}
             />
             <CallFilter
               headerGroup={headerGroup}
               num={5}
-              title="GENDER:"
-              options={gender}
+              title="SALON:"
+              options={salon}
             />
           </div>
         ))}
