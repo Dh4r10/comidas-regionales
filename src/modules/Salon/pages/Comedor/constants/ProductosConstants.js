@@ -15,7 +15,7 @@ export const FORM_SCHEMA_PRODUCTOS = {
     }
     // Devuelve el valor tal como está si no es un string
     return value;
-  }, z.number().positive().nonnegative().min(0, "Es requerido")),
+  }, z.number().positive().nonnegative().min(1, "Es requerido")),
 };
 
 export const DEFAULT_VALUES_PRODUCTOS = {

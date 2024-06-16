@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { faBoxOpen, faBroom } from '@fortawesome/free-solid-svg-icons'
 import ButtonAdd from './ButtonAdd'
 import CabeceraDetalleProductos from './DetalleProductos/CabeceraDetalleProductos'
@@ -8,13 +8,19 @@ import ButtonAnt from '@/components/ButtonAnt'
 
 const ListaProductos = (props) => {
 
-    let { setOpenProductoModal, items, setItems } = useContext(SalonPedidosContext)
+    let { setOpenProductoModal, setOpenProductoEditModal, items, setItems, setSelectedToEdit, reduceDecimal } = useContext(SalonPedidosContext)
 
-    const totalPrecioUnitario = items.reduce((acc, item) => acc + item.precio_unitario, 0);
+    let totalPrecioUnitario = items.reduce((acc, item) => acc + item.precio_unitario * item.cantidad, 0);
 
     const eliminarProducto = (codigo) => {
         const itemsRemove = [...items].filter(item => item.codigo !== codigo)
         setItems(itemsRemove)
+    }
+
+    const editarProducto = (codigo) => {
+        let itemToEdit = items.find(item => item.codigo === codigo);
+        setSelectedToEdit(itemToEdit)
+        setOpenProductoEditModal(true)
     }
 
     const handleLimpiarProductosSeleccionados = () => {
@@ -32,7 +38,7 @@ const ListaProductos = (props) => {
             </div>
             <div className='grid gap-1'>
                 {items.map(items => (
-                    <BodyDetalleProductos key={items.codigo} eliminarProducto={eliminarProducto} items={items} />
+                    <BodyDetalleProductos key={items.codigo} eliminarProducto={eliminarProducto} editarProducto={editarProducto} items={items} />
                 ))}
             </div>
             <div className='grid'>
@@ -47,7 +53,7 @@ const ListaProductos = (props) => {
                         <p className='font-bold'>TOTAL</p>
                     </div>
                     <div>
-                        <input value={`S/. ${totalPrecioUnitario}`} className='w-full h-full border border-r-slate-300 bg-[#f5f5f5] text-center font-semibold' disabled />
+                        <input value={`S/. ${reduceDecimal(totalPrecioUnitario)}`} className='w-full h-full border border-r-slate-300 bg-[#f5f5f5] text-center font-semibold' disabled />
                     </div>
                 </div>
             </div>

@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Modal } from 'antd';
 
 import './ModalSalon.scss'
+import SalonPedidosContext from '@/contexts/SalonPedidosContext';
 
 const ModalSalon = (props) => {
 
+  let { resetListaProductos } = useContext(SalonPedidosContext)
+
   const { children, title, open, setOpen } = props;
 
-  // const [confirmLoading, setConfirmLoading] = useState(false);
-  // const [modalText, setModalText] = useState('Content of the modal');
-
-  // const handleOk = () => {
-  //   setModalText('The modal will be closed after two seconds');
-  //   setConfirmLoading(true);
-  //   setTimeout(() => {
-  //     setOpen(false);
-  //     setConfirmLoading(false);
-  //   }, 2000);
-  // };
   const handleCancel = () => {
     console.log('Clicked cancel button');
     setOpen(false);
+    resetListaProductos()
   };
   return (
     <Modal
@@ -28,8 +21,6 @@ const ModalSalon = (props) => {
       title={title}
       centered
       open={open}
-      // onOk={handleOk}
-      // confirmLoading={confirmLoading}
       onCancel={handleCancel}
       className='modal-salon'
       footer={false}

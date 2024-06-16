@@ -38,7 +38,7 @@ const NumberFormularios = (props) => {
                             placeholder={placeholder}
                             disabled={disabled}
                             className="w-full"
-                            value={value === NaN ? 0 : value}
+                            value={value}
                             min={1}
                         />
                     )}

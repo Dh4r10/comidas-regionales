@@ -18,7 +18,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const PedidoForms = (props) => {
 
     let { authTokens } = useContext(AuthContext)
-    let { openPedido, setOpenPedido, items, idsSelected, setIdsSelected } = useContext(SalonPedidosContext)
+    let { openPedido, setOpenPedido, setItems, items, idsSelected, resetMesas } = useContext(SalonPedidosContext)
 
     const [confirmLoading, setConfirmLoading] = useState(false)
     const [errorPedido, setErrorPedido] = useState(null)
@@ -49,11 +49,8 @@ const PedidoForms = (props) => {
                 { idMesa: idSelected }
             ))
 
-            const resetMesas = () => {
-                setIdsSelected([])
-            }
-
             const newValues = { fecha: values.fechaPedido, tipoPedido: values.tipoPedido, listaPedidos, listaMesas }
+            console.log(newValues)
             await postAxios(DETTALLE_PEDIDO_API, newValues, headers, setConfirmLoading, setErrorPedido, resetMesas)
             setOpenPedido(false)
         } else {
@@ -63,6 +60,7 @@ const PedidoForms = (props) => {
 
     const handleCancel = () => {
         setOpenPedido(false)
+        setItems([])
     }
 
     return (
@@ -80,7 +78,7 @@ const PedidoForms = (props) => {
                 <div className='border-t pt-1'>
                     <ListaProductos />
                 </div>
-                <div className='flex justify-end gap-2 mt-2'>
+                <div className='flex justify-end gap-2 mt-4'>
                     <ButtonAnt disabled={false} htmlType="button" type="default" tittle="Cancelar" onClick={handleCancel} />
                     <ButtonAntAsync disabled={confirmLoading} htmlType="submit" type="primary" tittle="Enviar" />
                     <ToastContainer position="bottom-left" limit={1} stacked closeOnClick theme="colored" />

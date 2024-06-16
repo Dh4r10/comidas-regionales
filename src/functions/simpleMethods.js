@@ -34,8 +34,8 @@ export const postAxios = async (
   try {
     const response = await axios.post(url, data, { headers });
     console.log("operacion exitosa:", response);
-    setLoading(false);
     func();
+    setLoading(false);
   } catch (error) {
     console.error("Error al hacer la solicitud:", error);
     setError(error);

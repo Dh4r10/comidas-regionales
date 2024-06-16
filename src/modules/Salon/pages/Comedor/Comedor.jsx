@@ -11,6 +11,7 @@ import ModalSalon from "../../components/ModalSalon/ModalSalon";
 import PedidoForms from "./Forms/PedidoForms";
 import ProductosForms from "./Forms/ProductosForms";
 import SalonPedidosContext from "@/contexts/SalonPedidosContext";
+import ProductosEditForms from "./Forms/ProductosEditForms";
 
 const Comedor = () => {
 
@@ -93,6 +94,7 @@ const Comedor = () => {
       </div>
       <PedidoForms />
       <ProductosForms />
+      <ProductosEditForms />
     </div>
   );
 };
